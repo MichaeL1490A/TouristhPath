@@ -1,0 +1,89 @@
+/* ESTILOS ACCORDION */
+.p-accordion .p-accordion-header .p-accordion-header-link {
+    padding: 1.25rem;
+    padding-right: 0;
+    padding-left: 0;
+    border: 1px solid #dee2e6;
+    font-weight: 900;
+    border-radius: 5px 0px;
+    transition: box-shadow 0.2s;
+    text-transform: uppercase;
+}
+
+.p-accordion .p-accordion-header .p-accordion-header-link span.vertical-align-middle {
+    margin-right: 0.5rem;
+    width: 450px;
+}
+
+.p-accordion .p-accordion-header .p-accordion-header-link hr {
+    width: 100%;
+}
+
+.p-accordion .p-accordion-header .p-accordion-header-link .p-accordion-toggle-icon {
+    margin-right: 1rem;
+    background-image: url("../icons/acciones/agregar.svg");
+    background-repeat: no-repeat;
+    background-size: 10px 10px;
+    background-position: 2px 2px;
+    background-color: var(--color-default);
+    border-radius: 50%;
+    height: 15px;
+    width: 15px;
+    display: block;
+}
+
+.p-accordion .p-accordion-header.p-highlight .p-accordion-header-link .p-accordion-toggle-icon {
+    margin-right: 1rem;
+    background-image: url("../icons/acciones/cancelar.svg");
+    background-repeat: no-repeat;
+    background-size: 8px 8px;
+    background-position: 3px;
+    background-color: var(--color-default);
+    border-radius: 50%;
+    height: 15px;
+    width: 15px;
+    display: block;
+}
+
+.p-accordion .p-accordion-header .pi-chevron-down:before {
+    content: "";
+}
+
+.p-accordion .p-accordion-header .pi-chevron-right:before {
+    content: "";
+}
+
+.p-accordion .p-accordion-header:not(.p-disabled) .p-accordion-header-link:focus {
+    outline: 0 none;
+    outline-offset: 0;
+}
+
+.p-accordion .p-accordion-header:not(.p-disabled).p-highlight .p-accordion-header-link {
+    background: white;
+    color: var(--color-text-accordion-header);
+    border: 0;
+}
+
+.p-accordion .p-accordion-header:not(.p-highlight):not(.p-disabled):hover .p-accordion-header-link {
+    background: #e9ecef;
+    border: 0;
+    color: var(--color-text-accordion-header);
+}
+
+.p-accordion .p-accordion-header:not(.p-disabled).p-highlight:hover .p-accordion-header-link {
+    border: 0;
+    background: #e9ecef;
+    color: var(--color-text-accordion-header);
+}
+
+.p-accordion .p-accordion-content {
+    padding: 1.25rem;
+    border: 0;
+    background: var(--color-background-accordion);
+    color: var(--color-text-input);
+    border-radius: 5px;
+}
+
+.p-accordion p-accordiontab .p-accordion-tab {
+    margin-bottom: 4px;
+}

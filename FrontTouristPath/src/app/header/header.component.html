@@ -1,0 +1,15 @@
+<p-menubar>
+    <ng-template pTemplate="start">
+        <label>{{ menu }}</label>
+    </ng-template>
+    <ng-template pTemplate="end">
+        <div  class="vertical-align-middle my-auto notificacion">
+            <app-notificacion *ngIf="isAuthenticated()"></app-notificacion>
+        </div>
+        <p-button *ngIf="!isAuthenticated()" label="Login" styleClass="button-default button-login-header" (onClick)="login()"></p-button>
+        <div style="--url-icon: url(assets/icons/login/user.svg);">
+            <p-splitButton *ngIf="isAuthenticated()" #spu [label]="authService.usuario.username" icon="pi" (onClick)="spu.onDropdownButtonClick($event)"
+                [model]="items" styleClass="splitbutton-default custom-icon"></p-splitButton>
+        </div>
+    </ng-template>
+</p-menubar>

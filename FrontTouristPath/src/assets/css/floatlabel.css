@@ -1,0 +1,54 @@
+/* ESTILOS FLOAT LABEL */
+.p-float-label-static > label {
+    left: 0.75rem;
+    top: -10px !important;
+    background: linear-gradient(to bottom, var(--color-background) 61%, white 66%);
+    color: var(--color-text-label);
+    font-size: var(--font-size-default) !important;
+    text-transform: uppercase;
+    padding: 2px 4px;
+    margin-left: -3px;
+    margin-top: 0;
+}
+
+.p-float-label-static input:disabled ~ label,
+.p-float-label-static textarea:disabled ~ label,
+.p-float-label-static p-dropdown[ng-reflect-disabled="true"] ~ label,
+.p-float-label-static p-autocomplete[ng-reflect-disabled="true"] ~ label,
+.p-float-label-static p-multiselect[ng-reflect-disabled="true"] ~ label,
+.p-float-label-static p-calendar[ng-reflect-disabled="true"] ~ label,
+.p-float-label-static p-inputnumber[ng-reflect-disabled="true"] ~ label {
+    background: linear-gradient(to bottom, var(--color-background) 61%, #F7F9F7 66%) !important;
+}
+
+.p-float-label:not(.p-float-label-static) > label {
+    left: 0.75rem;
+    color: var(--color-text-input);
+    text-transform: uppercase;
+    transition-duration: 0.2s;
+}
+
+.p-float-label:not(.p-float-label-static) textarea~label {
+    top: 17px;
+}
+
+.p-float-label.p-float-label-static .p-placeholder,
+.p-float-label.p-float-label-static input::placeholder,
+.p-float-label.p-float-label-static .p-inputtext::placeholder {
+    opacity: 1;
+}
+
+.p-float-label:not(.p-float-label-static) input:focus ~ label,
+.p-float-label:not(.p-float-label-static) input.p-filled ~ label,
+.p-float-label:not(.p-float-label-static) textarea:focus ~ label,
+.p-float-label:not(.p-float-label-static) textarea.p-filled ~ label,
+.p-float-label:not(.p-float-label-static) .p-inputwrapper-focus ~ label,
+.p-float-label:not(.p-float-label-static) .p-inputwrapper-filled ~ label {
+    top: -10px !important;
+    background-color: transparent;
+    color: var(--color-text-label);
+    font-size: var(--font-size-default);
+    padding: 2px 4px;
+    margin-left: -3px;
+    margin-top: 0;
+}

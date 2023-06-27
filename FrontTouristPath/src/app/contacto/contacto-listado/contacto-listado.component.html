@@ -1,0 +1,215 @@
+<div class="container">
+    <div class="grid p-fluid mt-2">
+        <div class="col-12">
+            <div class="grid">
+                <!--filtros-->
+                <div class="col-9">
+                    <div class="grid">
+                        <div class="col-3">
+                            <span class="p-float-label p-float-label-static">
+                                <input pInputText id="apellidosNombres" [(ngModel)]="apellidos" [pKeyFilter]="regexAutocomplete"
+                                    (input)="tcont.filter($any($event.target).value, 'apellidosNombres', 'equals')"/>
+                                <label htmlFor="apellidosNombres">Apellidos&nbsp;y&nbsp;Nombres</label>
+                            </span>
+                        </div>
+                        <div class="col-3">
+                            <span class="p-float-label p-float-label-static">
+                                <p-multiSelect [options]="listaTitulo" optionLabel="nombre" id="titulo" [(ngModel)]="titulo"
+                                defaultLabel="Todos" (onChange)="tcont.filter(f.multiselectAuxiliarToString($any($event)), 'titulo', 'equals')"></p-multiSelect>
+                                <label for="titulo">Título</label>
+                            </span>        
+                        </div>
+                        <div class="col-2">
+                            <span class="p-float-label p-float-label-static">
+                                <p-multiSelect [options]="listaArea" optionLabel="nombre" id="area" [(ngModel)]="area"
+                                defaultLabel="Todos" (onChange)="tcont.filter(f.multiselectAuxiliarToString($any($event)), 'area', 'equals')"></p-multiSelect>
+                                <label for="area">Área</label>
+                            </span>
+                        </div>
+                        <div class="col-2">
+                            <span class="p-float-label p-float-label-static">
+                                <input pInputText id="cliente" [(ngModel)]="cliente" [pKeyFilter]="regexAutocomplete"
+                                    (input)="tcont.filter($any($event.target).value, 'cliente', 'equals')"/>                                
+                                <label htmlFor="cliente">Cliente</label>
+                            </span>
+                        </div>
+                        <div class="col-2">
+                            <span class="p-float-label p-float-label-static">
+                                <p-multiSelect [options]="listaInstitucionAdministrativa" optionLabel="abreviatura" id="institucionAdministrativa" [(ngModel)]="instAdm"
+                                defaultLabel="Todos" (onChange)="tcont.filter(f.multiselectAuxiliarToString($any($event)), 'institucionAdministrativa', 'equals')"></p-multiSelect>
+                                <label for="institucionAdministrativa">Inst.&nbsp;Adm.</label>
+                            </span>
+                        </div>
+                    </div>
+
+                    <div class="grid mt-2">
+                        <div class="col-3">
+                            <span class="p-float-label p-float-label-static">
+                                <p-multiSelect [options]="listaDepartamento" optionLabel="descripcion" id="departamento" [(ngModel)]="dptos"
+                                defaultLabel="Todos" (onChange)="tcont.filter(f.multiselectToString($any($event)), 'departamento', 'equals')"></p-multiSelect>
+                                <label for="departamento">Departamento</label>
+                            </span>
+                        </div>
+                        <div class="col-3">
+                            <span class="p-float-label p-float-label-static">
+                                <p-multiSelect [options]="listaCargo" optionLabel="nombre" id="cargo" defaultLabel="Todos" [(ngModel)]="cargo"
+                                (onChange)="tcont.filter(f.multiselectAuxiliarToString($any($event)), 'cargo', 'equals')"></p-multiSelect>
+                                <label for="cargo">Cargo</label>
+                            </span>
+                        </div>
+                        <div class="col-2">
+                            <span class="p-float-label p-float-label-static">
+                                <p-multiSelect [options]="listaRed" optionLabel="nombre" id="red" defaultLabel="Todos" [(ngModel)]="red"
+                                (onChange)="tcont.filter(f.multiselectAuxiliarToString($any($event)), 'red', 'equals')"></p-multiSelect>
+                                <label for="red">Red</label>
+                            </span>
+                        </div>
+                        <div class="col-2">
+                            <span class="p-float-label p-float-label-static">
+                                <input pInputText id="sede" [(ngModel)]="sede" [pKeyFilter]="regexAutocomplete"
+                                    (input)="tcont.filter($any($event.target).value, 'sede', 'equals')"/>
+                                <label htmlFor="sede">Sede</label>
+                            </span>
+                        </div>
+                        <div class="col-2">
+                            <span class="p-float-label p-float-label-static">
+                                <p-multiSelect [options]="listaEstadoContacto" optionLabel="nombre" id="cargo" defaultLabel="Todos" [(ngModel)]="estados"
+                                (onChange)="tcont.filter(f.multiselectAuxiliarToString($any($event)), 'estadoContacto', 'equals')"></p-multiSelect>
+                                <label for="cargo">Estado&nbsp;Contacto</label>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <!--filtros-->
+
+                <!--botones-->
+                <div class="col-3">
+                    <div class="grid mb-3">
+                        <div class="col-12 flex justify-content-end">
+                            <span style="--url-icon: url(assets/icons/acciones/agregar.svg)">
+                                <p-button label="Nuevo" icon="pi" styleClass="button-default custom-icon" class="mr-3"
+                                    (onClick)="abrirDetalle(0)" [disabled]="!authService.blnAdmin" ></p-button>
+                            </span>
+                            <span *ngIf="false" style="--url-icon: url(assets/icons/acciones/enviar_mail.svg)">
+                                <p-button label="Enviar" icon="pi" styleClass="button-default custom-icon" class="mr-3"
+                                    onClick="" [disabled]="true"></p-button>
+                            </span>
+                        </div>
+                    </div>
+                    <div class="grid">
+                        <div class="col-12 flex justify-content-end">
+                            <span style="--url-icon: url(assets/icons/acciones/eliminar_filtro.svg)">
+                                <p-button icon="pi" styleClass="button-default custom-icon" class="mr-3"
+                                (onClick)="limpiarFiltros()">
+                                </p-button>
+                            </span>
+                            <span style="--url-icon: url(assets/icons/acciones/exportar.svg)">
+                                <p-button label="Exportar" icon="pi" styleClass="button-default custom-icon" class="mr-3"
+                                    (onClick)="exportarListaContactos()"></p-button>
+                            </span>
+                        </div>
+                    </div>
+                </div>
+                <!--botones-->
+            </div>
+
+            <div class="grid">
+                <div class="col-12" style="--height-table: calc(100vh - 221px);">
+                    <p-table #tcont [value]="listaContacto" [(selection)]="contactoSeleccionado" 
+                        [selectionPageOnly]="true" [scrollable]="true"
+                        [lazy]="true" (onLazyLoad)="listar($event)" 
+                        [paginator]="true" [rows]="20" [tableStyle]="{'min-width': '1500px'}"
+                        [showCurrentPageReport]="true" [totalRecords]="totalRegistros"
+                        currentPageReportTemplate="{first} al {last} de {totalRecords} registros"
+                        [rowsPerPageOptions]="[20, 25, 50]" [sortOrder]="-1" selectionMode="single">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th style="width: 40px;">N</th>
+                                <th style="width: 300px;">Apellidos y Nombres</th>
+                                <th style="width: 300px;">Cargo / Área</th>
+                                <th style="width: 300px;">Red / Inst. Adm</th>  
+                                <th style="width: 300px;">Cliente / Sede</th>
+                                <th style="width: 120px;">Teléf. Móvil</th>
+                                <th style="width: 120px;">Teléf. Fijo</th>
+                                <th style="width: 120px;">Correos</th>
+                                <th style="width: 48px;" class="fondo-disabled">
+                                    <img src="assets/icons/acciones/enviar_mail.svg" alt="mail" class="icono-table-header">
+                                </th>
+                                <th style="width: 48px;" class="fondo-disabled">          
+                                    <img src="assets/icons/acciones/enviar_llamada.svg" alt="mail" class="icono-table-header"></th>
+                                <th style="width: 48px;" class="fondo-disabled">               
+                                    <img src="assets/icons/acciones/enviar_whatsapp.svg" alt="mail" class="icono-table-header"></th>
+                                <th style="width: 48px;" class="fondo-disabled">
+                                    <img src="assets/icons/acciones/enviar_sms.svg" alt="mail" class="icono-table-header">
+                                </th>
+                                <th style="width: 48px;" class="fondo-disabled">
+                                    <img src="assets/icons/acciones/enviar_callbox.svg" alt="mail" class="icono-table-header">
+                                </th>
+                                <th style="width: 60px;">Obs</th>
+                                <th style="width: 70px;">Estado</th>
+                                <th title="Responsable y fecha última modificación" >RESP.</th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-contacto let-i="rowIndex">
+                            <tr (dblclick)="abrirDetalle(contacto.id)">
+                                <td class="text-center">{{ i + 1 | number:'2.0-0' }}</td>
+                                <td >
+                                    <div [title]="contacto.apellidos" class="ellipsis-linea">{{ contacto.apellidos }}</div>
+                                    <div [title]="contacto.nombres"  style="color: var(--color-text-subtable);" class="ellipsis-linea">{{ contacto.nombres }}</div>
+                                </td>
+                                <td >
+                                    <div [title]="contacto.cargo" class="ellipsis-linea">{{ contacto.cargo }}</div>
+                                    <div [title]="contacto.area"  style="color: var(--color-text-subtable);" class="ellipsis-linea">{{ contacto.area }}</div>
+                                </td>
+                                <td >
+                                    <div [title]="contacto.red" class="ellipsis-linea">{{ contacto.red }}</div>
+                                    <div [title]="contacto.institucionAdministrativa"  style="color: var(--color-text-subtable);" class="ellipsis-linea">{{ contacto.institucionAdministrativa }}</div>
+                                </td>
+                                <td >
+                                    <div [title]="contacto.cliente" class="ellipsis-linea">{{ contacto.cliente }}</div>
+                                    <div [title]="contacto.sede" class="ellipsis-linea"  style="color: var(--color-text-subtable);">{{ contacto.sede }}</div>
+                                </td>
+                                <td class="text-center">{{contacto.telefonoMovil1}}<br>{{contacto.telefonoMovil2}}</td>
+                                <td class="text-center">{{contacto.telefonoFijo1}}<br>{{contacto.telefonoFijo2}}</td>
+                                <td>{{contacto.correo1}}<br>{{contacto.correo2}}</td>
+                                <td class="text-center">
+                                    <p-checkbox [binary]="true" [disabled]="true"></p-checkbox>                                    
+                                </td>
+                                <td class="text-center">
+                                    <p-checkbox [binary]="true" [disabled]="true"></p-checkbox>
+                                </td>
+                                <td class="text-center">
+                                    <p-checkbox [binary]="true" [disabled]="true"></p-checkbox>
+                                </td>
+                                <td class="text-center">
+                                    <p-checkbox [binary]="true" [disabled]="true"></p-checkbox>
+                                </td>
+                                <td class="text-center">
+                                    <p-checkbox [binary]="true" [disabled]="true"></p-checkbox>
+                                </td>
+                                <td class="text-center">{{contacto.numeroObservaciones}}</td>
+                                <td class="text-center">{{contacto.estado}}</td>
+                                <td >
+                                    <div [title]="contacto.responsableUltimaActualizacion" class="ellipsis-linea">{{ contacto.responsableUltimaActualizacion }}</div>
+                                    <div [title]="contacto.fechaUltimaActualizacion | date: 'dd MMM yyyy - HH:mm'"  style="color: var(--color-text-subtable);" class="ellipsis-linea">{{ contacto.fechaUltimaActualizacion | date: 'dd MMM yyyy - HH:mm'}}</div>
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<div class="spinner text-center" *ngIf="blnCargando" style="z-index: 1 !important">
+    <p-blockUI [blocked]="  true">
+        <div class="col-12">
+            <div class="row">
+                <p-progressSpinner styleClass="custom-spinner"></p-progressSpinner>
+            </div>
+            <div class="row">
+                <h3 class="mensaje-spinner"><b>{{mensajeCarga}}</b></h3>
+            </div>
+        </div>
+    </p-blockUI>
+</div>

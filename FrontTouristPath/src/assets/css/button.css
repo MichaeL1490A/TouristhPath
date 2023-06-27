@@ -1,0 +1,86 @@
+/* ESTILOS BUTTON */
+p-button {
+    height: 33px;
+}
+
+.p-button {
+    height: 29px;
+    border-radius: 5px;
+    box-shadow: 0 2px 4px -1px #0003, 0 4px 5px #00000024, 0 1px 10px #0000001f;
+    width: 110px;
+}
+
+.p-button.p-button-icon-only {
+    height: 29px;
+    width: 29px;
+    padding: 4px 1px;
+}
+
+tbody .p-button.p-button-icon-only {
+    height: 20px;
+    width: 20px;
+    padding: 1px;
+}
+
+.p-button-icon {
+    color: var(--color-text-default);
+}
+
+.p-button.p-disabled {
+    background-color: var(--color-button-disabled);
+    border: 1px solid var(--color-button-disabled);
+    box-shadow: 4px 4px 8px #454859;
+}
+
+.button-default {
+    background-color: var(--color-default);
+    border: 1px solid var(--color-default);
+    color: var(--color-text-default) !important;
+    box-shadow: 4px 4px 8px #4BA5A5;
+    text-transform: uppercase;
+}
+
+.button-default:hover {
+    background-color: var(--color-hover-default);
+    border: 1px solid var(--color-hover-default);
+    box-shadow: 4px 4px 8px #08685D;
+}
+
+.button-default-rounded {
+    border-radius: 50%;
+    width: 29px;
+}
+
+.button-rojo {
+    background-color: var(--color-rojo);
+    border: 1px solid var(--color-rojo);
+    color: var(--color-text-default) !important;
+    box-shadow: 4px 4px 8px #DB4661;
+    text-transform: uppercase;
+}
+
+.button-azul {
+/*     background-color: var(--color-boton-cerrar); */
+    background-color: var(--color-rojo);
+    border:0px !important;
+    box-shadow: none;
+    border-radius: 5px;
+    width: 24px !important;
+    height: 24px !important;
+}
+
+.button-rojo:hover {
+    background-color: var(--color-hover-rojo);
+    border: 1px solid var(--color-hover-rojo);
+    box-shadow: 4px 4px 8px #882035;
+}
+
+.button-azul:hover {
+    /* background-color: var(--color-boton-cerrar); */
+    background-color: var(--color-hover-rojo);
+    box-shadow: none;
+}
+
+.small-button {
+    width: 58px;
+}

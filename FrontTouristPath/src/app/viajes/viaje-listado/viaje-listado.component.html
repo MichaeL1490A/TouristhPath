@@ -1,0 +1,184 @@
+<div class="container">
+    <div class="grid p-fluid mt-2">
+        <div class="col-12">
+
+            <div class="grid">
+                <div class="col-12 titulo mb-4 mt-4">
+                    ENCUENTRE SU VIAJE EN PERÚ
+                </div>
+
+                <div class="col-3">
+                    <span class="p-float-label p-float-label-static">
+                        <input pInputText id="cliente" placeholder="Ingrese origen" />
+                        <!--                        (input)="tticket.filter($any($event.target).value, 'cliente', 'equals')"-->
+                        <label htmlFor="desde">Desde</label>
+                    </span>
+                </div>
+                <div class="col-3">
+                    <span class="p-float-label p-float-label-static">
+                        <input pInputText id="cliente" placeholder="Ingrese destino" />
+                        <label htmlFor="hasta">Hasta</label>
+                    </span>
+                </div>
+                <div class="col-3">
+                    <span class="p-float-label p-float-label-static">
+                        <p-calendar id="fechaTicket" selectionMode="single" placeholder="Seleccione fecha inicial">
+                            <!--                             [(ngModel)]="rangoFechaTicket"
+                        (onSelect)="tticket.filter(f.calendarRangeToString(rangoFechaTicket,'fechaFin',datePipe), 'fechaInicio', 'equals')"
+                        (onInput)="tticket.filter(f.calendarRangeToString(rangoFechaTicket,'fechaFin',datePipe), 'fechaFin', 'equals')">-->
+                        </p-calendar>
+                        <label htmlFor="fechaTicket">Fecha&nbsp;Desde</label>
+                    </span>
+                </div>
+                <div class="col-3">
+                    <span class="p-float-label p-float-label-static">
+                        <p-calendar id="fechaTicket" selectionMode="single" placeholder="Seleccione fecha final">
+                            <!--                             [(ngModel)]="rangoFechaTicket"
+                        (onSelect)="tticket.filter(f.calendarRangeToString(rangoFechaTicket,'fechaFin',datePipe), 'fechaInicio', 'equals')"
+                        (onInput)="tticket.filter(f.calendarRangeToString(rangoFechaTicket,'fechaFin',datePipe), 'fechaFin', 'equals')">-->
+                        </p-calendar>
+                        <label htmlFor="fechaTicket">Fecha&nbsp;Hasta</label>
+                    </span>
+                </div>
+            </div>
+
+            <div class="grid mt-4">
+                <div class="col-12 subtitulo uppercase">
+                    Viajes populares en Perú en este momento
+                </div>
+            </div>
+
+            <div class="grid mt-4">
+                <div class="col-3 px-3">
+                    <div class="grid">
+                        <div class="col-12" style="background: white; border: 1px solid #AAAAAA; height: 810px">
+                            <div class="grid">
+                                <div class="col-12" style="--height-table: calc(100vh - 575px);">
+                                    <p-table #tfav [value]="listaFavoritos" selectionMode="single">
+                                        <ng-template pTemplate="header">
+                                            <tr>
+                                            </tr>
+                                        </ng-template>
+                                        <ng-template pTemplate="body" let-fav let-i="rowIndex">
+                                            <tr>
+                                                <td class="text-center" style="width: 50px; border:none;">
+                                                    <p-checkbox [binary]="true"></p-checkbox>
+                                                </td>
+                                                <td style="border:none;">
+                                                    <div [title]="fav.nombre">{{fav.nombre}}</div>
+                                                </td>
+                                                <td style="width: 50px; border:none;" class="text-left">
+                                                    <div class="text-center" [title]="fav.nombre">{{fav.cantidad }}
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </ng-template>
+                                    </p-table>
+                                    <hr>
+                                </div>
+                                <div class="col-12 pl-4 subtitulo">PUNTUACIÓN</div>
+                                <div class="col-12" style="--height-table: calc(100vh - 540px);">
+                                    <p-table #tpnt [value]="listaPuntuacion" selectionMode="single">
+                                        <ng-template pTemplate="header">
+                                            <tr>
+                                            </tr>
+                                        </ng-template>
+                                        <ng-template pTemplate="body" let-fav let-i="rowIndex">
+                                            <tr>
+                                                <td class="text-center" style="width: 50px; border:none;">
+                                                    <p-checkbox [binary]="true"></p-checkbox>
+                                                </td>
+                                                <td style="border:none;">
+                                                    <div [title]="fav.nombre">{{fav.nombre}}</div>
+                                                </td>
+                                                <td style="width: 50px; border:none;" class="text-left">
+                                                    <div class="text-center" [title]="fav.nombre">{{fav.cantidad }}
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </ng-template>
+                                    </p-table>
+                                    <hr>
+                                </div>
+                                <div class="col-12 pl-4 subtitulo">QUE&nbsp;TENGAN</div>
+                                <div class="col-12" style="--height-table: calc(100vh - 430px);">
+                                    <p-table #tpnt [value]="listaQueTengan" selectionMode="single">
+                                        <ng-template pTemplate="header">
+                                            <tr>
+                                            </tr>
+                                        </ng-template>
+                                        <ng-template pTemplate="body" let-fav let-i="rowIndex">
+                                            <tr>
+                                                <td class="text-center" style="width: 50px; border:none;">
+                                                    <p-checkbox [binary]="true"></p-checkbox>
+                                                </td>
+                                                <td style="border:none;">
+                                                    <div [title]="fav.nombre">{{fav.nombre}}</div>
+                                                </td>
+                                                <td style="width: 50px; border:none;" class="text-left">
+                                                    <div class="text-center" [title]="fav.nombre">{{fav.cantidad }}
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </ng-template>
+                                    </p-table>
+                                    <hr>
+                                </div>
+                                <div class="col-12 pl-4 subtitulo">TU&nbsp;PRESUPUESTO</div>
+                                <div class="col-12" style="--height-table: calc(100vh - 540px)">
+                                    <p-table [value]="listaTuPresupuesto" selectionMode="single">
+                                        <ng-template pTemplate="header">
+                                            <tr>
+                                            </tr>
+                                        </ng-template>
+                                        <ng-template pTemplate="body" let-fav let-i="rowIndex">
+                                            <tr>
+                                                <td class="text-center" style="width: 50px; border:none;">
+                                                    <p-checkbox [binary]="true"></p-checkbox>
+                                                </td>
+                                                <td style="border:none;">
+                                                    <div [title]="fav.nombre">{{fav.nombre}}</div>
+                                                </td>
+                                                <td style="width: 50px; border:none;" class="text-left">
+                                                    <div class="text-center" [title]="fav.nombre">{{fav.cantidad }}
+                                                    </div>
+                                                </td>
+                                            </tr>
+                                        </ng-template>
+                                    </p-table>
+                                </div>
+
+
+
+                            </div>
+                        </div>
+
+
+                    </div>
+
+
+                </div>
+
+                <div class="col-9">
+                    <div class="grid">
+                        <div class="col-7 subtitulo">
+                            2,350 VIAJES EN PERÚ
+                        </div>
+                        <div class="col-1 pt-3">
+                            AGENCIA
+                        </div>
+                        <div class="col-4">
+                            <p-multiSelect id="estadoTicket" defaultLabel="Todos" optionLabel="nombre">
+                            </p-multiSelect>
+                            <!--(onChange)="tticket.filter(f.multiselectAuxiliarToString($any($event)), 'estadoTicket', 'equals')"-->
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+
+
+        </div>
+    </div>
+</div>

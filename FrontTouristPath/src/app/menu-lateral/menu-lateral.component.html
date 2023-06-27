@@ -1,0 +1,22 @@
+<div class="barra-lateral" style="z-index: 8;">
+    <img src="assets/icons/logo.png" alt="logo" class="logo">
+    <div *ngFor="let m of menu; let i = index" (click)="menuL.toggle($event);abrirSubMenuLateral(i)">      
+        <div class="flex align-content-center flex-wrap menu-static">
+            <div class="flex align-items-center justify-content-center w-full">
+                <img [src]="m.icon" [alt]="m.label" class="icono-static">
+                <span class="ml-1 circulo-static"></span>
+            </div>
+        </div>
+    </div>
+    <p-tieredMenu #menuL [model]="menuFlotante" [popup]="true" styleClass="menu-flotante"></p-tieredMenu>
+</div>
+<p-button [icon]="visible?'pi pi-angle-left':'pi pi-angle-right'" [ngClass]="{'boton-abrir-menu': !visible, 'boton-cerrar-menu': visible}" styleClass="button-default button-default-rounded" (onClick)="mostrarMenu()"></p-button>
+<p-sidebar [(visible)]="visible" [transitionOptions]="'0.5s linear'" [showCloseIcon]="false">
+    <div style="height: 35px;"></div>
+    <div style="display: flex;">
+        <img src="assets/icons/logo.png" alt="logo" class="logo-sidebar">
+        <img src="assets/images/menu/Logo.png" alt="logo" class="logo-sidebar-letras">
+    </div>
+    <div style="height: 20px;"></div>
+    <p-panelMenu [model]="menu"></p-panelMenu>
+</p-sidebar>

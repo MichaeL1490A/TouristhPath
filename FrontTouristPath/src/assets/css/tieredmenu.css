@@ -1,0 +1,29 @@
+/* ESTILOS MENU DESPLEGABLE */
+.p-tieredmenu {
+    background-color: #FFFFFF;
+    border-radius: 3px;
+    border: 0 none;
+    box-shadow: 0 2px 4px -1px #0003, 0 4px 5px #00000024, 0 1px 10px #0000001f;
+    padding-top: 3px;
+    padding-bottom: 3px;
+    left: -40px !important;
+}
+
+.p-tieredmenu .p-menuitem {
+    margin: 0;
+}
+
+.p-tieredmenu .p-menuitem .p-menuitem-link {
+    padding: 10px 9px;
+    width: 150px;
+    transition: box-shadow 0.2s;
+    user-select: none;
+}
+
+.p-tieredmenu .p-menuitem-link:not(.p-disabled):hover {
+    background-color: var(--color-default-hover);
+}
+
+.p-menuitem {
+    text-align: left;
+}

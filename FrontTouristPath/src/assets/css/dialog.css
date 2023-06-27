@@ -1,0 +1,53 @@
+/* ESTILOS DIALOG */
+.p-dialog {
+    border-radius: 5px;
+    /* box-shadow: 0 1px 3px rgba(0, 0, 0, 0.3); */
+    border: 0 none;
+    background-color: var(--color-background);
+}
+
+.p-dialog .p-dialog-header {
+    border-bottom: 0 none;
+    background: var(--color-header);
+    color: var(--color-text-default);
+    padding: 0 0.5rem;
+    border-radius: 5px;
+    height: 33px;
+    margin: 20px 20px 0 20px;
+}
+
+.p-dialog .p-dialog-header .p-dialog-title {
+    font-weight: 900;
+    font-size: 14px;
+    text-transform: uppercase;
+}
+
+.p-dialog .p-dialog-header .p-dialog-header-icon:last-child {
+    margin-right: 0;
+}
+
+.p-dialog .p-dialog-header .p-dialog-header-icon {
+    width: 2rem;
+    height: 2rem;
+    color: var(--color-text-default);
+    border: 0 none;
+    background: transparent;
+    border-radius: 50%;
+    transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+    margin-right: 0.5rem;
+}
+
+.p-dialog .p-dialog-content:last-of-type {
+    border-radius: 5px;
+}
+
+.p-dialog .p-dialog-content {
+    background: var(--color-background);
+    color: var(--color-text-input);
+    padding: 20px;
+    overflow: hidden;
+}
+
+.custom-dialog-padding-bottom.p-dialog .p-dialog-content  {
+    padding-bottom: 25px;
+}

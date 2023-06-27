@@ -1,0 +1,139 @@
+<div class="grid">
+    <div class="col-4">
+        <div class="">
+            <div class="big-label ml-5">
+                {{nombreDepartamento}}
+            </div>
+        </div>
+        <div style="position: relative;width: 100%;height: 100%;">
+            <svg fill="var(--color-default)" class="mapa">
+                <use [attr.href]="urlImagenDpto"></use>
+            </svg>
+        </div>
+    </div>
+    <div class="col-12 sm:col-12 md:col-12 lg:col-4 xl:col-4 mt-2 mb-4">
+        <div class="grid">
+            <div class="col-12">
+                <div style="display: grid;">
+                    <span class="titulo">Presencia</span>
+                    <span class="subtitulo">SPECTRUM EN LA ZONA</span>
+                </div>
+            </div>
+            <div class="col-12 sm:col-12 md:col-6 lg:col-6 xl:col-6 mt-2 wrapping-label">
+                Cliente
+            </div>
+            <div class="col-12 sm:col-12 md:col-6 lg:col-6 xl:col-6 mt-2">
+                <div style="display:flex; justify-content: center;">
+                    <p-button [label]="equipos[0]+''" styleClass="circle-button">
+                    </p-button>
+                </div>
+            </div>
+            <div class="col-12 sm:col-12 md:col-6 lg:col-6 xl:col-6 mt-2 wrapping-label">
+                Equipos
+            </div>
+            <div class="col-12 sm:col-12 md:col-6 lg:col-6 xl:col-6 mt-2 ">
+                <div style="display:flex; justify-content: center;">
+                    <p-button [label]="equipos[1]+''" styleClass="circle-button">
+                    </p-button>
+                </div>
+            </div>
+            <div class="col-12 sm:col-12 md:col-6 lg:col-6 xl:col-6 mt-2 wrapping-label">
+                Sede
+            </div>
+            <div class="col-12 sm:col-12 md:col-6 lg:col-6 xl:col-6 mt-2">
+                <div style="display:flex; justify-content: center;">
+                    <p-button [label]="equipos[2]+''" styleClass="circle-button">
+                    </p-button>
+                </div>
+            </div>
+            <div class="col-12 sm:col-12 md:col-6 lg:col-6 xl:col-6 mt-2 wrapping-label">
+                Ticket Pro
+            </div>
+            <div class="col-12 sm:col-12 md:col-6 lg:col-6 xl:col-6 mt-2">
+                <div style="display:flex; justify-content: center;">
+                    <p-button [label]="equipos[3]+''" styleClass="circle-button">
+                    </p-button>
+                </div>
+            </div>
+        </div>
+    </div>
+    <!-- Estado de tickets -->
+    <div class="col-12 sm:col-12 md:col-12 lg:col-4 xl:col-4 mt-2 mb-4">
+        <div class="grid">
+            <div class="col-12">
+                <div style="display: grid;">
+                    <span class="titulo">Operación Soporte</span>
+                    <span class="subtitulo">TICKETS ÚLTIMOS 3 MESES</span>
+                </div>
+            </div>
+
+            <ng-container *ngFor="let estado of listaEstados">
+                <div class="col-12 sm:col-12 md:col-6 lg:col-6 xl:col-6 mt-1 wrapping-label">
+                    {{estado.titulo}}
+                </div>
+                <div class="col-12 sm:col-12 md:col-6 lg:col-6 xl:col-6 mt-1">
+                    <div style="display:flex; justify-content: center;">
+                        <p-button [label]="estado.numero" styleClass="circle-button cursor"   (onClick)="navegar(estado.id, 0)">
+                        </p-button>
+                    </div>
+                </div>
+            </ng-container>
+        </div>
+    </div>
+
+    <div class="col-12 " style="--height-table: auto">
+        <p-table #ta [value]="listaAlertas"
+            [scrollable]="false">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th colspan="2" class="text-left">Alertas</th>
+                    <th ></th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-alerta let-i="rowIndex">
+                <tr>
+                    <td class="text-center">
+                        <img height="20" [src]="'assets/icons/dashboard/'+alerta.icono" alt="Mi SVG feliz"/>
+                    </td>
+                    <td >
+                        <div [title]="alerta.titulo" class="ellipsis-linea"><b>{{ alerta.titulo }}</b></div>
+                        <div [title]="alerta.descripcion" style="font-size: 10px;" class="ellipsis-linea">{{ alerta.descripcion }}</div>
+                    </td>
+                    <td class="text-center" style="cursor: pointer;" (click)="navegar(estadosAlerta[i+1], 1)"><b>{{alerta.numero}}</b></td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+    <div class="col-12 mt-4" style="--height-table: auto">
+        <p-table #tp [value]="listaProgramaciones" [lazy]="true"
+            [scrollable]="false" (onLazyLoad)="listar()">
+            <ng-template pTemplate="header">
+                <tr>
+                    <th colspan="2" class="text-left" style="cursor: pointer;" (click)="navegar2()">PRÓXIMOS</th>
+                    <th class="text-center header-subtable" style="width: 35px; ">P</th>
+                    <th style="width: 65px;">{{tmes[0]}}</th>
+                    <th style="width: 65px;">{{tmes[1]}}</th>
+                    <th style="width: 65px;">{{tmes[2]}}</th>
+                    <th style="width: 65px;">{{tmes[3]}}</th>
+                    <th style="width: 65px;">{{tmes[4]}}</th>
+                    <th style="width: 65px;">{{tmes[5]}}</th>
+                </tr>
+            </ng-template>
+            <ng-template pTemplate="body" let-programacion let-i="rowIndex">
+                <tr>
+                    <td class="text-center">
+                        <img height="20" [src]="'assets/icons/dashboard/programados.svg'" alt="Mi SVG feliz"/>
+                    </td>
+                    <td>{{programacion.titulo}}</td>
+                    <td class="text-center body-subtable">{{programacion.pasados}}</td>
+                    <td class="text-center">{{programacion.mes1}}</td>
+                    <td class="text-center">{{programacion.mes2}}</td>
+                    <td class="text-center">{{programacion.mes3}}</td>
+                    <td class="text-center">{{programacion.mes4}}</td>
+                    <td class="text-center">{{programacion.mes5}}</td>
+                    <td class="text-center">{{programacion.mes6}}</td>
+                </tr>
+            </ng-template>
+        </p-table>
+    </div>
+</div>

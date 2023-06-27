@@ -1,0 +1,113 @@
+<div class="container">
+    <div class="grid p-fluid mt-2">
+        <div class="col-12">
+            <div class="grid">
+                <div class="field col-3">
+                    <span class="p-float-label p-float-label-static">
+                        <input pInputText id="personal" (input)="dtu.filter($any($event.target).value, 'nombre', 'equals')" [pKeyFilter]="regexAutocomplete"/>
+                        <label htmlFor="personal">Personal</label>
+                    </span>
+                </div>
+                <div class="field col-3">
+                    <span class="p-float-label p-float-label-static">
+                        <input pInputText id="email" (input)="dtu.filter($any($event.target).value, 'correo', 'equals')" [pKeyFilter]="regexAutocomplete"/>
+                        <label htmlFor="email">Correo</label>
+                    </span>
+                </div>
+                <div class="field col-6 flex justify-content-end">
+                    <div style="--url-icon: url(assets/icons/acciones/agregar.svg)">
+                        <p-button label="Nuevo" icon="pi" styleClass="button-default custom-icon" class="mr-3" (onClick)="agregar()"
+                        [disabled]="usuarioEditando!=null || blnOcupado"></p-button>
+                    </div>
+                    <!-- <div style="--url-icon: url(assets/icons/acciones/editar.svg)">
+                        <p-button label="Editar" icon="pi" styleClass="button-default custom-icon" class="mr-3"></p-button>
+                    </div>
+                    <div style="--url-icon: url(assets/icons/acciones/cancelar.svg)">
+                        <p-button label="Cancelar" icon="pi" styleClass="button-default custom-icon" class="mr-3"></p-button>
+                    </div>
+                    <div style="--url-icon: url(assets/icons/acciones/guardar.svg)">
+                        <p-button label="Guardar" icon="pi" styleClass="button-default custom-icon"></p-button>
+                    </div> -->
+                </div>
+            </div>
+            <div class="grid">
+                <!-- <pre>{{listaUsuario | json}}</pre> -->
+                <div class="col-12" style="--height-table: calc(100vh - 166px);">
+                    <!-- <div #timeline></div> -->
+                    <p-table #dtu [value]="listaUsuario" [scrollable]="true" [lazy]="true" (onLazyLoad)="listar($event)" sortField="" [sortOrder]="0" [rows]="20">
+                        <ng-template pTemplate="header">
+                            <tr>
+                                <th style="width: 40px;">N</th>
+                                <th>Personal</th>
+                                <th style="width: 200px;">Username</th>
+                                <th style="width: 300px;">Correo</th>
+                                <th style="width: 150px;">Roles</th>
+                                <th style="width: 150px;">Estado</th>
+                                <th style="width: 80px;"></th>
+                            </tr>
+                        </ng-template>
+                        <ng-template pTemplate="body" let-usuario let-i="rowIndex">
+                            <tr>
+                                <td class="text-center">{{ i + 1 | number:'2.0-0' }}</td>
+                                <td>
+                                    <div *ngIf="usuario.id == usuarioEditando?.id">
+                                        <p-autoComplete field="nombre" [suggestions]="listaPersonal" (completeMethod)="filtrar($event.query)"
+                                        [(ngModel)]="personalSeleccionado" (onSelect)="asignarPersonal()" (onKeyUp)="desasignarPersonal()" class="text-center"
+                                        [pKeyFilter]="regexAutocomplete"></p-autoComplete>
+                                    </div>
+                                    <div *ngIf="usuario.id != usuarioEditando?.id">{{ usuario.personal?.nombre }}</div>
+                                </td>
+                                <td>
+                                    <div *ngIf="usuario.id == usuarioEditando?.id">
+                                        <input pInputText [(ngModel)]="usuario.username"/>
+                                    </div>
+                                    <div *ngIf="usuario.id != usuarioEditando?.id">{{ usuario.username }}</div>
+                                </td>
+                                <td>
+                                    <div *ngIf="usuario.id == usuarioEditando?.id">
+                                        <input pInputText [(ngModel)]="usuario.email"/>
+                                    </div>
+                                    <div *ngIf="usuario.id != usuarioEditando?.id">{{ usuario.email }}</div>
+                                </td>
+                                <td>
+                                    <div *ngIf="usuario.id == usuarioEditando?.id">
+                                        <span class="p-input-icon-left" (click)="abrirRoles()">
+                                            <!-- <i class="pi pi-plus-circle"></i> -->
+                                            <input type="text" class="ellipsis-linea" style="cursor: pointer;" pInputText disabled [(ngModel)]="usuario.rolesString" />
+                                        </span>
+                                    </div>
+                                    <div *ngIf="usuario.id != usuarioEditando?.id" class="ellipsis-linea">{{ usuario.rolesString }}</div>
+                                </td>
+                                <td>
+                                    <div *ngIf="usuario.id == usuarioEditando?.id">
+                                        <p-dropdown [options]="listaEstado" [(ngModel)]="estadoSeleccionado" optionLabel="nombre" appendTo="body"
+                                            [autoDisplayFirst]="true" placeholder="Seleccione" (onChange)="asignarEstado()" [disabled]="usuario.id == 0"></p-dropdown>
+                                    </div>
+                                    <div *ngIf="usuario.id != usuarioEditando?.id">{{ usuario.estado?.nombre }}</div>
+                                </td>
+                                <td>
+                                    <div class="text-center al">
+                                        <div *ngIf="!usuarioEditando || usuarioEditando?.id != usuario?.id" style="--url-icon: url(assets/icons/acciones/editar.svg) ">
+                                            <p-button icon="pi" styleClass="button-default custom-icon"  (onClick)="editar(usuario)" [disabled]="usuarioEditando != null || blnOcupado">
+                                            </p-button>
+                                        </div>
+                                        <div *ngIf="usuarioEditando && usuarioEditando?.id == usuario?.id" class="flex">
+                                            <div style="--url-icon: url(assets/icons/acciones/guardar.svg) ">
+                                                <p-button icon="pi" styleClass="ml-2 button-default custom-icon" (onClick)="guardar()" [disabled]="blnOcupado">
+                                                </p-button> 
+                                            </div>
+                                            <div style="--url-icon: url(assets/icons/acciones/cancelar.svg) ">
+                                                <p-button icon="pi" styleClass="ml-2 button-default custom-icon button-rojo" (onClick)="cancelar()" [disabled]="blnOcupado">
+                                                </p-button>
+                                            </div>
+                                        </div>
+                                    </div>
+                                </td>
+                            </tr>
+                        </ng-template>
+                    </p-table>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
