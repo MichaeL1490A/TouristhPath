@@ -1,5 +1,5 @@
 <div class="barra-lateral" style="z-index: 8;">
-    <img src="assets/icons/logo.png" alt="logo" class="logo">
+    <img src="assets/icons/logoTP.png" alt="logo" class="logo">
     <div *ngFor="let m of menu; let i = index" (click)="menuL.toggle($event);abrirSubMenuLateral(i)">      
         <div class="flex align-content-center flex-wrap menu-static">
             <div class="flex align-items-center justify-content-center w-full">
@@ -14,7 +14,7 @@
 <p-sidebar [(visible)]="visible" [transitionOptions]="'0.5s linear'" [showCloseIcon]="false">
     <div style="height: 35px;"></div>
     <div style="display: flex;">
-        <img src="assets/icons/logo.png" alt="logo" class="logo-sidebar">
+        <img src="assets/icons/logoTP.png" alt="logo" class="logo-sidebar">
         <img src="assets/images/menu/Logo.png" alt="logo" class="logo-sidebar-letras">
     </div>
     <div style="height: 20px;"></div>

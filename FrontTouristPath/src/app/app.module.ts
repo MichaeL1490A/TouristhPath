@@ -70,6 +70,7 @@ import { ProgressSpinnerModule } from 'primeng/progressspinner';
 import { ModalEnviarCorreoComponent } from './correo/modal-enviar-correo/modal-enviar-correo.component';
 import { ViajeListadoComponent } from './viajes/viaje-listado/viaje-listado.component';
 import { ViajeDetalleComponent } from './viajes/viaje-detalle/viaje-detalle.component';
+import { PantallaPrincipalComponent } from './pantalla-principal/pantalla-principal.component';
 
 
 registerLocaleData(localeES, 'es-Pe');
@@ -99,7 +100,8 @@ registerLocaleData(localeES, 'es-Pe');
     DashboardDepartamentosIzquierdaComponent,
     ModalEnviarCorreoComponent,
     ViajeListadoComponent,
-    ViajeDetalleComponent
+    ViajeDetalleComponent,
+    PantallaPrincipalComponent
   ],
   imports: [
     BrowserModule,

@@ -4,7 +4,7 @@
     </ng-template>
     <ng-template pTemplate="end">
         <div  class="vertical-align-middle my-auto notificacion">
-            <app-notificacion *ngIf="isAuthenticated()"></app-notificacion>
+<!--            <app-notificacion *ngIf="isAuthenticated()"></app-notificacion>-->
         </div>
         <p-button *ngIf="!isAuthenticated()" label="Login" styleClass="button-default button-login-header" (onClick)="login()"></p-button>
         <div style="--url-icon: url(assets/icons/login/user.svg);">
