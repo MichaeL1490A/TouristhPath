@@ -5,7 +5,7 @@
                 <div class="grid">
                     <div class="field col-12">
                         <span class="p-float-label p-float-label-static">
-                            <input [disabled]="!authService.blnAdmin"  pInputText id="apPaterno" [(ngModel)]="personal.apellidoPaterno" maxlength="100"/>
+                            <!-- <input [disabled]="!authService.blnAdmin"  pInputText id="apPaterno" [(ngModel)]="personal.apellidoPaterno" maxlength="100"/> -->
                             <label htmlFor="apPaterno">Apellido Paterno <span class="campo-obligatorio">*</span></label>
                         </span>
                     </div>
@@ -13,7 +13,7 @@
                 <div class="grid">
                     <div class="field col-12">
                         <span class="p-float-label p-float-label-static">
-                            <input  [disabled]="!authService.blnAdmin"  pInputText id="apMaterno" [(ngModel)]="personal.apellidoMaterno" maxlength="100"/>
+                            <!-- <input  [disabled]="!authService.blnAdmin"  pInputText id="apMaterno" [(ngModel)]="personal.apellidoMaterno" maxlength="100"/> -->
                             <label htmlFor="apMaterno">Apellido Materno <span class="campo-obligatorio">*</span></label>
                         </span>
                     </div>
@@ -21,7 +21,7 @@
                 <div class="grid">
                     <div class="field col-12">
                         <span class="p-float-label p-float-label-static">
-                            <input  [disabled]="!authService.blnAdmin" pInputText id="nombre" [(ngModel)]="personal.nombres" maxlength="100"/>
+                            <!-- <input  [disabled]="!authService.blnAdmin" pInputText id="nombre" [(ngModel)]="personal.nombres" maxlength="100"/> -->
                             <label htmlFor="nombre">Nombres <span class="campo-obligatorio">*</span></label>
                         </span>
                     </div>
@@ -29,7 +29,7 @@
                 <div class="grid">
                     <div class="field col-12">
                         <span class="p-float-label p-float-label-static">
-                            <input [disabled]="!authService.blnAdmin"  pInputText id="nombreC" [(ngModel)]="personal.nombreCorto" maxlength="40"/>
+                            <!-- <input [disabled]="!authService.blnAdmin"  pInputText id="nombreC" [(ngModel)]="personal.nombreCorto" maxlength="40"/> -->
                             <label htmlFor="nombreC">Nombre Corto</label>
                         </span>
                     </div>
@@ -37,15 +37,15 @@
                 <div class="grid">
                     <div class="field col-6">
                         <span class="p-float-label p-float-label-static">
-                            <p-dropdown  [disabled]="!authService.blnAdmin"  [options]="listaTitulo" [(ngModel)]="personal.titulo" optionLabel="nombre" id="titulo"
-                                [autoDisplayFirst]="false" placeholder="Seleccione" appendTo="body"></p-dropdown>
+                            <!-- <p-dropdown  [disabled]="!authService.blnAdmin"  [options]="listaTitulo" [(ngModel)]="personal.titulo" optionLabel="nombre" id="titulo"
+                                [autoDisplayFirst]="false" placeholder="Seleccione" appendTo="body"></p-dropdown> -->
                             <label for="titulo">Título</label>
                         </span>
                     </div>
                     <div class="field col-6">
                         <span class="p-float-label p-float-label-static">
-                            <p-dropdown  [disabled]="!authService.blnAdmin"  [options]="listaArea" [(ngModel)]="personal.area" optionLabel="nombre" id="area"
-                                [autoDisplayFirst]="false" placeholder="Seleccione" appendTo="body"></p-dropdown>
+                            <!-- <p-dropdown  [disabled]="!authService.blnAdmin"  [options]="listaArea" [(ngModel)]="personal.area" optionLabel="nombre" id="area"
+                                [autoDisplayFirst]="false" placeholder="Seleccione" appendTo="body"></p-dropdown> -->
                             <label for="area">Área</label>
                         </span>
                     </div>
@@ -53,15 +53,15 @@
                 <div class="grid">
                     <div class="field col-6">
                         <span class="p-float-label p-float-label-static">
-                            <p-dropdown  [disabled]="!authService.blnAdmin"  [options]="listaCargo" [(ngModel)]="personal.cargo" optionLabel="nombre" id="cargo"
-                                [autoDisplayFirst]="false" placeholder="Seleccione" appendTo="body"></p-dropdown>
+                            <!-- <p-dropdown  [disabled]="!authService.blnAdmin"  [options]="listaCargo" [(ngModel)]="personal.cargo" optionLabel="nombre" id="cargo"
+                                [autoDisplayFirst]="false" placeholder="Seleccione" appendTo="body"></p-dropdown> -->
                             <label for="cargo">Cargo</label>
                         </span>
                     </div>
                     <div class="field col-6">
                         <span class="p-float-label p-float-label-static">
-                            <p-dropdown  [disabled]="!authService.blnAdmin"  [options]="listaTipoPersonal" [(ngModel)]="personal.tipo" optionLabel="nombre" id="tipo"
-                                [autoDisplayFirst]="false" placeholder="Seleccione" appendTo="body"></p-dropdown>
+                            <!-- <p-dropdown  [disabled]="!authService.blnAdmin"  [options]="listaTipoPersonal" [(ngModel)]="personal.tipo" optionLabel="nombre" id="tipo"
+                                [autoDisplayFirst]="false" placeholder="Seleccione" appendTo="body"></p-dropdown> -->
                             <label for="tipo">Tipo</label>
                         </span>
                     </div>
@@ -71,14 +71,14 @@
                 <div class="grid">
                     <div class="field col-6">
                         <span class="p-float-label p-float-label-static">
-                            <p-dropdown  [disabled]="!authService.blnAdmin"  [options]="listaTipoDocumento" [(ngModel)]="personal.tipoDocumento" optionLabel="abreviatura" id="tDoc"
-                                [autoDisplayFirst]="false" placeholder="Seleccione" appendTo="body"></p-dropdown>
+                            <!-- <p-dropdown  [disabled]="!authService.blnAdmin"  [options]="listaTipoDocumento" [(ngModel)]="personal.tipoDocumento" optionLabel="abreviatura" id="tDoc"
+                                [autoDisplayFirst]="false" placeholder="Seleccione" appendTo="body"></p-dropdown> -->
                             <label for="tDoc">Tipo Documento</label>
                         </span>
                     </div>
                     <div class="field col-6">
                         <span class="p-float-label p-float-label-static">
-                            <input  [disabled]="!authService.blnAdmin"  pInputText id="nroDoc" [(ngModel)]="personal.nroDocumento" maxlength="20"/>
+                            <!-- <input  [disabled]="!authService.blnAdmin"  pInputText id="nroDoc" [(ngModel)]="personal.nroDocumento" maxlength="20"/> -->
                             <label htmlFor="nroDoc">Nro Documento</label>
                         </span>
                     </div>
@@ -86,13 +86,13 @@
                 <div class="grid">
                     <div class="field col-6">
                         <span class="p-float-label p-float-label-static">
-                            <input   [disabled]="!authService.blnAdmin"  pInputText id="tMovil1" [(ngModel)]="personal.celular1" maxlength="20"/>
+                            <!-- <input   [disabled]="!authService.blnAdmin"  pInputText id="tMovil1" [(ngModel)]="personal.celular1" maxlength="20"/> -->
                             <label htmlFor="tMovil1">Teléf Móvil 1</label>
                         </span>
                     </div>
                     <div class="field col-6">
                         <span class="p-float-label p-float-label-static">
-                            <input  [disabled]="!authService.blnAdmin"  pInputText id="tMovil2" [(ngModel)]="personal.celular2" maxlength="20"/>
+                            <!-- <input  [disabled]="!authService.blnAdmin"  pInputText id="tMovil2" [(ngModel)]="personal.celular2" maxlength="20"/> -->
                             <label htmlFor="tMovil2">Teléf Móvil 2</label>
                         </span>
                     </div>
@@ -100,19 +100,19 @@
                 <div class="grid">
                     <div class="field flex col-12">
                         <span class="p-float-label p-float-label-static w-full">
-                            <input  [disabled]="!authService.blnAdmin"  pInputText id="correo1" [(ngModel)]="personal.correo1" maxlength="60"/>
+                            <!-- <input  [disabled]="!authService.blnAdmin"  pInputText id="correo1" [(ngModel)]="personal.correo1" maxlength="60"/> -->
                             <label htmlFor="correo1">Correo 1</label>
                         </span>
                         <div style="--url-icon: url(assets/icons/acciones/enviar_mail.svg)">
-                            <p-button icon="pi" styleClass="button-default custom-icon" class="ml-3"
-                            (onClick)="enviarMensaje()"></p-button>
+                            <!-- <p-button icon="pi" styleClass="button-default custom-icon" class="ml-3"
+                            (onClick)="enviarMensaje()"></p-button> -->
                         </div>
                     </div>
                 </div>
                 <div class="grid">
                     <div class="field flex col-12">
                         <span class="p-float-label p-float-label-static w-full">
-                            <input [disabled]="!authService.blnAdmin"  pInputText id="correo2" [(ngModel)]="personal.correo2" maxlength="60"/>
+                            <!-- <input [disabled]="!authService.blnAdmin"  pInputText id="correo2" [(ngModel)]="personal.correo2" maxlength="60"/> -->
                             <label htmlFor="correo2">Correo 2</label>
                         </span>
                     </div>
@@ -120,25 +120,25 @@
                 <div class="grid">
                     <div class="field col-6">
                         <span class="p-float-label p-float-label-static">
-                            <input  [disabled]="!authService.blnAdmin" pInputText id="anexo" [(ngModel)]="personal.anexo" maxlength="20"/>
+                            <!-- <input  [disabled]="!authService.blnAdmin" pInputText id="anexo" [(ngModel)]="personal.anexo" maxlength="20"/> -->
                             <label htmlFor="anexo">Anexo</label>
                         </span>
                     </div>
                     <div class="field col-6">
-                        <p-radioButton [disabled]="!authService.blnAdmin" name="tFirma" value="1" [(ngModel)]="personal.tipoFirma" inputId="fDig"></p-radioButton>
-                        <label for="fDig" class="ml-1">Firma Digital</label>
+                        <!-- <p-radioButton [disabled]="!authService.blnAdmin" name="tFirma" value="1" [(ngModel)]="personal.tipoFirma" inputId="fDig"></p-radioButton>
+                        <label for="fDig" class="ml-1">Firma Digital</label> -->
                     </div>
                 </div>
                 <div class="grid">
                     <div class="field col-6">
                         <span class="p-float-label p-float-label-static">
-                            <p-dropdown  [disabled]="!authService.blnAdmin" [options]="listaEstado" [(ngModel)]="personal.estado" optionLabel="nombre" id="estado"
-                                [autoDisplayFirst]="false" placeholder="Seleccione" appendTo="body"></p-dropdown>
+                            <!-- <p-dropdown  [disabled]="!authService.blnAdmin" [options]="listaEstado" [(ngModel)]="personal.estado" optionLabel="nombre" id="estado"
+                                [autoDisplayFirst]="false" placeholder="Seleccione" appendTo="body"></p-dropdown> -->
                             <label for="estado">Estado</label>
                         </span>
                     </div>
                     <div class="field col-6">
-                        <p-radioButton  [disabled]="!authService.blnAdmin" name="tFirma" value="0" [(ngModel)]="personal.tipoFirma" inputId="fEle"></p-radioButton>
+                        <!-- <p-radioButton  [disabled]="!authService.blnAdmin" name="tFirma" value="0" [(ngModel)]="personal.tipoFirma" inputId="fEle"></p-radioButton> -->
                         <label for="fEle" class="ml-1">Firma Electrónica</label>
                     </div>
                 </div>
@@ -146,34 +146,34 @@
             <div class="col-4">
                 <div class="grid">
                     <div class="col-6" style="height: 150px;">
-                        <p-image [src]="personal.fotoUrl | authImage | async" alt="foto" width="100%" height="170px"></p-image>
+                        <!-- <p-image [src]="personal.fotoUrl | authImage | async" alt="foto" width="100%" height="170px"></p-image> -->
                         <div class="iconos-flotantes">
                             <div style="--url-icon: url(assets/icons/acciones/abrir_archivo.svg)">
-                                <p-button  [disabled]="!authService.blnAdmin"  icon="pi" [styleClass]=" !(personal.foto?.length > 0)? 'button-default custom-icon sin-archivo':'button-default custom-icon'" (onClick)="fotoI.click();"></p-button>
+                                <!-- <p-button  [disabled]="!authService.blnAdmin"  icon="pi" [styleClass]=" !(personal.foto?.length > 0)? 'button-default custom-icon sin-archivo':'button-default custom-icon'" (onClick)="fotoI.click();"></p-button> -->
                                 <input  [disabled]="!authService.blnAdmin"  #fotoI id="foto" name="fotoI" style="display: none;" type="file" (change)="cargarFoto($event)" accept=".jpg, .png, .jpeg">
                             </div>
                             <div style="--url-icon: url(assets/icons/acciones/cancelar.svg)">
-                                <p-button  [disabled]="!authService.blnAdmin" icon="pi" styleClass="button-rojo custom-icon" class="ml-2" (onClick)="quitarFoto()"></p-button>
+                                <!-- <p-button  [disabled]="!authService.blnAdmin" icon="pi" styleClass="button-rojo custom-icon" class="ml-2" (onClick)="quitarFoto()"></p-button> -->
                             </div>
                         </div>
                     </div>
                     <div class="col-6">
                         <span class="p-float-label p-float-label-static">
-                            <textarea [disabled]="!authService.blnAdmin"  rows="9" pInputTextarea [(ngModel)]="personal.observacion" id="obs" style="resize: none; height: 171px;" maxlength="120"></textarea>
+                            <!-- <textarea [disabled]="!authService.blnAdmin"  rows="9" pInputTextarea [(ngModel)]="personal.observacion" id="obs" style="resize: none; height: 171px;" maxlength="120"></textarea> -->
                             <label for="obs">Observaciones</label>
                         </span>
                     </div>
                 </div>
                 <div class="grid">
                     <div class="col-12" style="height: 70px;">
-                        <p-image [src]="personal.firmaUrl | authImage | async" alt="firma" width="100%" height="81px"></p-image>
+                        <!-- <p-image [src]="personal.firmaUrl | authImage | async" alt="firma" width="100%" height="81px"></p-image> -->
                         <div class="iconos-flotantes">
                             <div style="--url-icon: url(assets/icons/acciones/abrir_archivo.svg)">
-                                <p-button [disabled]="!authService.blnAdmin"  icon="pi" [styleClass]=" !(personal.firma?.length > 0)? 'button-default custom-icon sin-archivo':'button-default custom-icon'"  (onClick)="firmaI.click();"></p-button>
+                                <!-- <p-button [disabled]="!authService.blnAdmin"  icon="pi" [styleClass]=" !(personal.firma?.length > 0)? 'button-default custom-icon sin-archivo':'button-default custom-icon'"  (onClick)="firmaI.click();"></p-button> -->
                                 <input  [disabled]="!authService.blnAdmin"  #firmaI id="firma" name="firmaI" style="display: none;" type="file" (change)="cargarFirma($event)" accept=".jpg, .png, .jpeg">
                             </div>
                             <div style="--url-icon: url(assets/icons/acciones/cancelar.svg)">
-                                <p-button [disabled]="!authService.blnAdmin"  icon="pi" styleClass="button-rojo custom-icon" class="ml-2" (onClick)="quitarFirma()"></p-button>
+                                <!-- <p-button [disabled]="!authService.blnAdmin"  icon="pi" styleClass="button-rojo custom-icon" class="ml-2" (onClick)="quitarFirma()"></p-button> -->
                             </div>
                         </div>
                     </div>
@@ -182,7 +182,7 @@
         </div>
         <div class="grid">
             <div class="col-12 mb-2" style="--height-table: 150px;">
-                <p-table [value]="personal.permisos" [scrollable]="true">
+                <!-- <p-table [value]="personal.permisos" [scrollable]="true">
                     <ng-template pTemplate="header">
                         <tr>
                             <th style="width: 40px;">N</th>
@@ -253,19 +253,19 @@
                             </td>
                         </tr>
                     </ng-template>
-                </p-table>
+                </p-table> -->
             </div>
         </div>
         <div class="grid">
             <div class="col-12 pb-0 flex justify-content-end">
                 <div style="--url-icon: url(assets/icons/acciones/cancelar.svg)">
-                    <p-button label="Salir" icon="pi" styleClass="button-rojo custom-icon" class="mr-3" (onClick)="cerrarModal()" [disabled]="blnOcupado"></p-button>
+                    <!-- <p-button label="Salir" icon="pi" styleClass="button-rojo custom-icon" class="mr-3" (onClick)="cerrarModal()" [disabled]="blnOcupado"></p-button> -->
                 </div>
                 <div *ngIf="false" style="--url-icon: url(assets/icons/acciones/enviar_mail.svg)">
-                    <p-button label="Enviar" icon="pi" styleClass="button-default custom-icon" class="mr-3" [disabled]="true"></p-button>
+                    <!-- <p-button label="Enviar" icon="pi" styleClass="button-default custom-icon" class="mr-3" [disabled]="true"></p-button> -->
                 </div>
                 <div style="--url-icon: url(assets/icons/acciones/guardar.svg)">
-                    <p-button label="Guardar"  icon="pi" styleClass="button-default custom-icon" (onClick)="guardar()" [disabled]="blnOcupado || !authService.blnAdmin"></p-button>
+                    <!-- <p-button label="Guardar"  icon="pi" styleClass="button-default custom-icon" (onClick)="guardar()" [disabled]="blnOcupado || !authService.blnAdmin"></p-button> -->
                 </div>
             </div>
         </div>

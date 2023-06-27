@@ -13,7 +13,7 @@ export class MenuLateralComponent {
   menu: MenuItem[] = [];
   menuFlotante: MenuItem[] = [];
 
-  iconos: string[] = ["viajar.png", "viajar.png", "viajar.png"];
+  iconos: string[] = ["viajes.png", "tours.png", "lugares.png"];
   nombresMenu: string[] = ["VIAJES", "TOURS", "LUGARES"];
   opcionesMenu: any[] = [ 
     [{label: 'Viajes', routerLink: '/viaje/listado'},
@@ -36,7 +36,7 @@ export class MenuLateralComponent {
 
     let i: number = 0;
     this.menu.forEach( m => {
-//      m.icon = "../../assets/icons/menu_lateral/" + this.iconos[i];
+      m.icon = "../../assets/icons/menu_lateral/" + this.iconos[i];
       m.label = this.nombresMenu[i];
       m.items = this.opcionesMenu[i];
       i = i+1;
@@ -44,9 +44,15 @@ export class MenuLateralComponent {
   }
 
   mostrarMenu() {
+    console.log('1')
+    let i=0
     this.menu.forEach(m => {
+      m.icon = "../../assets/icons/menu_lateral/" + this.iconos[i];
       m.expanded = false;
+      i = i+1
     });
+    console.log(this.menu)
+
     this.visible = !this.visible;
   }
 

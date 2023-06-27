@@ -4,11 +4,11 @@ import { LazyLoadEvent, MenuItem, MessageService } from 'primeng/api';
 import { DialogService, DynamicDialogRef } from 'primeng/dynamicdialog';
 import { environment } from 'src/environments/environment';
 import { FuncionesComunes } from 'src/app/common/funciones-comunes';
-import { MantenimientoPreventivoService } from 'src/app/equipos/mantenimiento-preventivo.service';
+//import { MantenimientoPreventivoService } from 'src/app/equipos/mantenimiento-preventivo.service';
 import { Mensajes } from 'src/app/common/mensajes';
 import { DatePipe } from '@angular/common';
-import { SubtipoEquipoService } from 'src/app/equipos/subtipo-equipo.service';
-import { Subtipo } from 'src/app/equipos/models/subtipo';
+//import { SubtipoEquipoService } from 'src/app/equipos/subtipo-equipo.service';
+//import { Subtipo } from 'src/app/equipos/models/subtipo';
 import { Table } from 'primeng/table';
 import { ModalObservacionesComponent } from 'src/app/common/modales/modal-observaciones/modal-observaciones.component';
 import { saveAs } from 'file-saver';
@@ -36,18 +36,18 @@ export class DashboardConsumoAccesoriosComponent  implements OnInit {
   listado: any[] = []
   listadoSeleccionado: any[] = []
   keysHeader: any[] = []
-  listaSubtipo: Subtipo[];
-  listaSubtipoSeleccionado: Subtipo[];
-  listaSubSubtipo: Subtipo[];
-  listaSubSubtipoSeleccionado: Subtipo[];
+//  listaSubtipo: Subtipo[];
+//  listaSubtipoSeleccionado: Subtipo[];
+//  listaSubSubtipo: Subtipo[];
+//  listaSubSubtipoSeleccionado: Subtipo[];
   mesNumero: any;
 
   constructor(
     private messageService: MessageService,
     public dialogService: DialogService,
-    public accesorioService: MantenimientoPreventivoService,
+  //  public accesorioService: MantenimientoPreventivoService,
     public datePipe: DatePipe,
-    private subtipoService: SubtipoEquipoService
+//    private subtipoService: SubtipoEquipoService
   ) {}
 
   ngOnInit() {
@@ -58,12 +58,12 @@ export class DashboardConsumoAccesoriosComponent  implements OnInit {
 
     let listasAuxiliares: Observable<any>[] = [];
     listasAuxiliares.push(
-      this.subtipoService.getSubtipoSelect(0)
+//      this.subtipoService.getSubtipoSelect(0)
     );
 
     forkJoin(listasAuxiliares).subscribe({
       next: (res) => {
-        this.listaSubtipo = res[0];
+  //      this.listaSubtipo = res[0];
       },
       error: (err) => {
         if (err[0]) this.messageService.add({ severity: 'error', summary: Mensajes.tituloError, detail: `${Mensajes.mensajeErrorLectura}  al obtener la informacion.` });
@@ -76,28 +76,28 @@ export class DashboardConsumoAccesoriosComponent  implements OnInit {
     this.event = event
     this.page = (event.first / event.rows);
 
-    this.accesorioService.getListProyeccion (event, this.page, event.rows, this.fechaInicialString).subscribe({
-      next: (res) => {
-        this.totalRegistros = res.totalElements;
-        this.listado = res.content as any[];
-        this.listado.map( l => {
-          if(l.obs){
-            l.obs=JSON.parse(l.obs)
-          }
-          else{
-            l.obs = []
-          }
-          return l;
-        })
+    // this.accesorioService.getListProyeccion (event, this.page, event.rows, this.fechaInicialString).subscribe({
+    //   next: (res) => {
+    //     this.totalRegistros = res.totalElements;
+    //     this.listado = res.content as any[];
+    //     this.listado.map( l => {
+    //       if(l.obs){
+    //         l.obs=JSON.parse(l.obs)
+    //       }
+    //       else{
+    //         l.obs = []
+    //       }
+    //       return l;
+    //     })
       
-        this.actualizarKeysHeader()
-      },
-      error: (err) => {
-        console.error(err)
-        this.messageService.add({ severity: 'error', summary: Mensajes.tituloError, detail: `${Mensajes.mensajeErrorLectura} de clientes` });
-        this.blnOcupado = false;
-      }
-    });
+    //     this.actualizarKeysHeader()
+    //   },
+    //   error: (err) => {
+    //     console.error(err)
+    //     this.messageService.add({ severity: 'error', summary: Mensajes.tituloError, detail: `${Mensajes.mensajeErrorLectura} de clientes` });
+    //     this.blnOcupado = false;
+    //   }
+    // });
   }
 
   actualizarKeysHeader(){
@@ -124,19 +124,19 @@ export class DashboardConsumoAccesoriosComponent  implements OnInit {
   }
   mostrarSubSubtipoBySubtipos(){
 
-    this.listaSubSubtipoSeleccionado = null
+    // this.listaSubSubtipoSeleccionado = null
     this.event.filters['subsubtipo'] = {value: "", matchMode:"equals"}
     
-    if(this.listaSubtipoSeleccionado?.length >0 ){
-      this.subtipoService.getSubsubtipoSelect(this.listaSubtipoSeleccionado.map(e => e.id).join()).subscribe({
-        next: (res) => {
-          this.listaSubSubtipo = res
-        },
-        error: (err) => {
-          this.messageService.add({severity: 'error', summary: Mensajes.tituloError, detail: 'Error al obtener listado de subsubtipos.'});
-        }
-      })
-    }
+    // if(this.listaSubtipoSeleccionado?.length >0 ){
+    //   this.subtipoService.getSubsubtipoSelect(this.listaSubtipoSeleccionado.map(e => e.id).join()).subscribe({
+    //     next: (res) => {
+    //       this.listaSubSubtipo = res
+    //     },
+    //     error: (err) => {
+    //       this.messageService.add({severity: 'error', summary: Mensajes.tituloError, detail: 'Error al obtener listado de subsubtipos.'});
+    //     }
+    //   })
+    // }
   }  
 
   abrirModalObservaciones( data){
@@ -155,21 +155,21 @@ export class DashboardConsumoAccesoriosComponent  implements OnInit {
   }
 
   exportarListaConsumoAccesorio(){
-    this.accesorioService.exportarListaConsumoAccesorio(this.event, this.fechaInicialString).subscribe({
-      next: (res) => {
-        saveAs(res, 'LISTA-PROYECCION-CONSUMO-ACCESORIO.xlsx');
-      },
-      error: (err) => {
-        this.messageService.add({severity: 'error', summary: Mensajes.tituloError, detail: 'Error al generar excel de proyeccion consumo accesorio en M.P.'});
-      }
-    })
+    // this.accesorioService.exportarListaConsumoAccesorio(this.event, this.fechaInicialString).subscribe({
+    //   next: (res) => {
+    //     saveAs(res, 'LISTA-PROYECCION-CONSUMO-ACCESORIO.xlsx');
+    //   },
+    //   error: (err) => {
+    //     this.messageService.add({severity: 'error', summary: Mensajes.tituloError, detail: 'Error al generar excel de proyeccion consumo accesorio en M.P.'});
+    //   }
+    // })
   }
 
   cargarArchivo(accesorio: any){
     this.ref = this.dialogService.open(ModalArchivosComponent, {
       draggable: true,
       data: {
-        variables: {archivo: accesorio.foto, file: accesorio.fotoFile, service: this.accesorioService, numeroRuta: 1},
+        // variables: {archivo: accesorio.foto, file: accesorio.fotoFile, service: this.accesorioService, numeroRuta: 1},
         disable: true
       },
       header: 'FOTO DEL ACCESORIO',

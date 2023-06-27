@@ -21,10 +21,10 @@ const routes: Routes = [
   { path: 'usuario/listado', component: UsuarioListadoComponent, canActivate: [AuthGuard], title: `${empresa} | SEGURIDAD | CONSULTA DE USUARIOS`, data: { role: ['ROLE_TI'], menu: 'SEGURIDAD | CONSULTA DE USUARIOS' } },
 
   { path: 'dashboard/departamentos', component: DashboardDepartamentosComponent, canActivate: [AuthGuard], title: `${empresa} | DASHBOARD | DASHBOARD KPIs`, data: { role: ['sROLE_TI'], menu: 'DASHBOARD | DASHBOARD KPIs' } },
-  { path: 'pantalla/principal', component: PantallaPrincipalComponent, canActivate: [AuthGuard], title: `${empresa} | DASHBOARD | DASHBOARD KPIs`, data: { role: ['sROLE_TI'], menu: 'DASHBOARD | DASHBOARD KPIs' } },
+  { path: 'pantalla/principal', component: PantallaPrincipalComponent, canActivate: [AuthGuard], title: `TOURIST PATH`, data: { role: ['sROLE_TI'], menu: 'TOURIST PATH' } },
 
-  { path: 'viaje/listado', component: ViajeListadoComponent, canActivate: [AuthGuard], title: `TOURIST PATH | VIAJES | CONSULTA DE VIAJES`, data: { role: ['ROLE_TI'], menu: 'TOURIST PATH' } },
-  { path: 'viaje/detalle', component: ViajeDetalleComponent, canActivate: [AuthGuard], title: `TOURIST PATH | VIAJES | DETALLE DEL VIAJE`, data: { role: ['ROLE_TI'], menu: 'TOURIST PATH' } },
+  { path: 'viaje/listado', component: ViajeListadoComponent, canActivate: [AuthGuard], title: `TP | VIAJE | CONSULTA DE VIAJES`, data: { role: ['ROLE_TI'], menu: 'TOURIST PATH' } },
+  { path: 'viaje/detalle', component: ViajeDetalleComponent, canActivate: [AuthGuard], title: `TP | VIAJE | DETALLE DEL VIAJE`, data: { role: ['ROLE_TI'], menu: 'TOURIST PATH' } },
 
   { path: '**', redirectTo: 'pantalla/principal', pathMatch: 'full' }
 ];

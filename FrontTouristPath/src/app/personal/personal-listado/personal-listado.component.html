@@ -6,23 +6,23 @@
                     <div class="grid">
                         <div class="field col-3">
                             <span class="p-float-label p-float-label-static">
-                                <input pInputText id="apellidos" (input)="dtp.filter($any($event.target).value, 'apellidos', 'equals')" [pKeyFilter]="regexAutocomplete"/>
+                                <!-- <input pInputText id="apellidos" (input)="dtp.filter($any($event.target).value, 'apellidos', 'equals')" [pKeyFilter]="regexAutocomplete"/> -->
                                 <label htmlFor="apellidos">Apellidos</label>
                             </span>
                         </div>
                         <div class="field col-3">
                             <span class="p-float-label p-float-label-static">
-                                <p-multiSelect [options]="listaArea" [(ngModel)]="areasSeleccionadas"
+                                <!-- <p-multiSelect [options]="listaArea" [(ngModel)]="areasSeleccionadas"
                                     optionLabel="nombre" id="area" defaultLabel="Todos"
-                                    (onChange)="dtp.filter(f.multiselectAuxiliarToString($any($event)), 'areas', 'equals')"></p-multiSelect>
+                                    (onChange)="dtp.filter(f.multiselectAuxiliarToString($any($event)), 'areas', 'equals')"></p-multiSelect> -->
                                 <label for="area">Área</label>
                             </span>
                         </div>
                         <div class="field col-3">
                             <span class="p-float-label p-float-label-static">
-                                <p-multiSelect [options]="listaTipoPersonal" [(ngModel)]="tiposPersonalSeleccionados"
+                                <!-- <p-multiSelect [options]="listaTipoPersonal" [(ngModel)]="tiposPersonalSeleccionados"
                                     optionLabel="nombre" id="tpersonal" defaultLabel="Todos"
-                                    (onChange)="dtp.filter(f.multiselectAuxiliarToString($any($event)), 'tipoPersonal', 'equals')"></p-multiSelect>
+                                    (onChange)="dtp.filter(f.multiselectAuxiliarToString($any($event)), 'tipoPersonal', 'equals')"></p-multiSelect> -->
                                 <label for="tpersonal">Tipo Personal</label>
                             </span>
                         </div>
@@ -31,15 +31,15 @@
                     <div class="grid">
                         <div class="field col-3">
                             <span class="p-float-label p-float-label-static">
-                                <input pInputText id="nombres" (input)="dtp.filter($any($event.target).value, 'nombres', 'equals')" [pKeyFilter]="regexAutocomplete"/>
+                                <!-- <input pInputText id="nombres" (input)="dtp.filter($any($event.target).value, 'nombres', 'equals')" [pKeyFilter]="regexAutocomplete"/> -->
                                 <label htmlFor="nombres">Nombres</label>
                             </span>
                         </div>
                         <div class="field col-3">
                             <span class="p-float-label p-float-label-static">
-                                <p-multiSelect [options]="listaEstado" [(ngModel)]="estadosSeleccionados"
+                                <!-- <p-multiSelect [options]="listaEstado" [(ngModel)]="estadosSeleccionados"
                                     optionLabel="nombre" id="estado" defaultLabel="Todos"
-                                    (onChange)="dtp.filter(f.multiselectAuxiliarToString($any($event)), 'estado', 'equals')"></p-multiSelect>
+                                    (onChange)="dtp.filter(f.multiselectAuxiliarToString($any($event)), 'estado', 'equals')"></p-multiSelect> -->
                                 <label for="estado">Estado</label>
                             </span>
                         </div>
@@ -51,17 +51,17 @@
                     <div class="grid">
                         <div class="field col-12 flex justify-content-end">
                             <div *ngIf="false" style="--url-icon: url(assets/icons/acciones/enviar_mail.svg)">
-                                <p-button label="Enviar" icon="pi" styleClass="button-default custom-icon" class="mr-3" [disabled]="true"></p-button>
+                                <!-- <p-button label="Enviar" icon="pi" styleClass="button-default custom-icon" class="mr-3" [disabled]="true"></p-button> -->
                             </div>
                             <div style="--url-icon: url(assets/icons/acciones/agregar.svg)">
-                                <p-button label="Nuevo" icon="pi" styleClass="button-default custom-icon" (onClick)="abrirDetalle(0)" [disabled]="blnOcupado || !authService.blnAdmin"></p-button>
+                                <!-- <p-button label="Nuevo" icon="pi" styleClass="button-default custom-icon" (onClick)="abrirDetalle(0)" [disabled]="blnOcupado || !authService.blnAdmin"></p-button> -->
                             </div>
                         </div>
                     </div>
                     <div class="grid">
                         <div class="field col-12 flex justify-content-end">
                             <div style="--url-icon: url(assets/icons/acciones/cancelar.svg)">
-                                <p-button label="Inactivar" icon="pi" styleClass="button-rojo custom-icon" (onClick)="desahibilitarPersonalMasivo()" [disabled]="blnOcupado || !authService.blnAdmin"></p-button>
+                                <!-- <p-button label="Inactivar" icon="pi" styleClass="button-rojo custom-icon" (onClick)="desahibilitarPersonalMasivo()" [disabled]="blnOcupado || !authService.blnAdmin"></p-button> -->
                             </div>
                         </div>
                     </div>
@@ -69,7 +69,7 @@
             </div>
             <div class="grid">
                 <div class="col-12" style="--height-table: calc(100vh - 166px);">
-                    <p-table #dtp [value]="listaPersonal" [(selection)]="personalSeleccionado" [selectionPageOnly]="true" [scrollable]="true"
+                    <!-- <p-table #dtp [value]="listaPersonal" [(selection)]="personalSeleccionado" [selectionPageOnly]="true" [scrollable]="true"
                         [lazy]="true" (onLazyLoad)="listar($event)" [tableStyle]="{ 'min-width': '1500px' }" sortField="" [sortOrder]="0">
                         <ng-template pTemplate="header">
                             <tr>
@@ -152,7 +152,7 @@
                                 <td class="text-center">{{ personal.firma }}</td>
                             </tr>
                         </ng-template>
-                    </p-table>
+                    </p-table> -->
                 </div>
             </div>
         </div>
