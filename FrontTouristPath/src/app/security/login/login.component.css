@@ -18,7 +18,7 @@
     right: 0;
     height: 100%;
     width: 55%;
-    background-image: url('../../../assets/images/login/trabajador.png');
+    background-image: url('../../../assets/images/login/peru-tours-explorer.png');
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }
@@ -112,9 +112,9 @@
 
 ::ng-deep p-checkbox.checkbox-login .p-checkbox-label {
     flex-grow: 0;
-    color: white;
+    color: black;
     font-size: 1.9vh;
-    font-weight: 300;
+    font-weight: 600;
 }
 
 ::ng-deep p-checkbox.checkbox-login .p-checkbox {

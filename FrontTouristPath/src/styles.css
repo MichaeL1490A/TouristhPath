@@ -29,7 +29,7 @@
 
     --color-hover-rojo: #A3263E;
     --color-amarillo: yellow;
-    --color-hover-amarillo: #FFBC5A;
+    --color-hover-amarillo: #ff9901;
     --color-verde: green;
     --color-hover-verde: darkgreen;
     --color-azul: skyblue;
@@ -200,7 +200,7 @@ hr {
     height: calc(100% - 41px);
     top: 41px;
     overflow: auto;
-    background-image: url('./assets/images/login/background.png');
+    background-image: url('./assets/images/login/loginTP.jpg');
     background-repeat: no-repeat;
     background-size: 100% 100%;
 }
