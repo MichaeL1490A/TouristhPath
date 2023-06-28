@@ -1,0 +1,27 @@
+::ng-deep .p-menubar {
+    background-color: var(--color-header);
+    padding: 6px 9px 6px 9px;
+    position: fixed;
+    width: 100%;
+    top: 0;
+    left: 0;
+    z-index: 999;
+}
+
+::ng-deep .p-menubar label {
+    color: var(--color-text-default);
+}
+
+::ng-deep .p-menubar .splitbutton-default:hover {
+    --color-default: var(--color-hover-default);
+}
+
+::ng-deep .button-login-header {
+    box-shadow: 0 2px 4px -1px #0003, 0 4px 5px #00000024, 0 1px 10px #0000001f;
+}
+
+.notificacion {
+    margin-right: 15px;
+    color: white;
+    cursor: pointer;
+}

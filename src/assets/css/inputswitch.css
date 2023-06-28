@@ -1,0 +1,47 @@
+/* ESTILOS SWITCH */
+.p-inputswitch {
+    width: 2.5rem;
+    height: 1.75rem;  
+}
+
+.p-inputswitch .p-inputswitch-slider {
+    background: var(--color-default-switch);
+    transition: background-color 0.2s, color 0.2s, border-color 0.2s, box-shadow 0.2s;
+    border-radius: 30px;
+    top: 10px;
+}
+ 
+.p-inputswitch .p-inputswitch-slider:before {
+    background: var(--color-default);
+    width: 20px;
+    height: 20px;
+    left: -5px;
+    margin-top: -10px;
+    border-radius: 50%;
+    transition-duration: 0.2s;
+}
+
+.p-inputswitch.p-inputswitch-checked .p-inputswitch-slider:before {
+    transform: translateX(1.75rem);
+}
+
+.p-inputswitch.p-focus .p-inputswitch-slider {
+    outline: 0 none;
+    outline-offset: 0;
+}
+
+.p-inputswitch:not(.p-disabled):hover .p-inputswitch-slider {
+    background: var(--color-default-switch);
+}
+
+.p-inputswitch.p-inputswitch-checked .p-inputswitch-slider {
+    background: var(--color-default-switch);
+}
+
+.p-inputswitch.p-inputswitch-checked .p-inputswitch-slider:before {
+    background: var(--color-default);
+}
+
+.p-inputswitch.p-inputswitch-checked:not(.p-disabled):hover .p-inputswitch-slider {
+    background: var(--color-default-switch);
+}

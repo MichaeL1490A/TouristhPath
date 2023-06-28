@@ -1,0 +1,28 @@
+/* ESTILOS INPUT TEXT */
+.p-inputtext {
+    height: 33px;
+    border: 1px solid var(--color-border-default);
+    border-radius: 3px;
+    background-color: white;
+    color: var(--color-text-input) !important;
+    text-transform: uppercase;
+    padding: 10.5px;
+    appearance: none;
+}
+
+.p-inputtext:enabled:hover {
+    border-color: var(--color-border-hover);
+}
+
+.p-inputtext:enabled:focus {
+    outline: 0 none;
+    outline-offset: 0;
+    box-shadow: none;
+    border-color: var(--color-border-selected);
+}
+
+.p-datatable .p-inputtext {
+    border: 0 none;
+    background-color: transparent;
+    padding-left: 0;
+}

@@ -1,0 +1,214 @@
+/* ESTILOS TABLE */
+.p-datatable-wrapper {
+    min-height: 0px;
+    height: var(--height-table) !important;
+    overflow-x: auto !important;
+    overflow-y: auto !important;
+}
+
+.p-datatable .p-datatable-thead>tr>th {
+    height: 33px;
+    text-align: center;
+    border: 1px solid var(--color-border-default);
+    padding-left: 8px;
+    padding-right: 8px;
+    font-weight: 400;
+    color: var(--color-text-default);
+    background: var(--color-header);
+    transition: box-shadow 0.2s;
+    text-transform: uppercase;
+}
+
+.p-datatable .p-datatable-tbody>tr {
+    background: white;
+    color: var(--color-text-table);
+    transition: box-shadow 0.2s;
+}
+
+.p-datatable .p-datatable-tbody>tr>td {
+    height: 33px;
+    text-align: left;
+    border: 1px solid var(--color-border-default);
+    border-width: 1px 1px 0 0;
+    padding-left: 8px;
+    padding-right: 8px;
+    text-transform: uppercase;
+}
+
+.p-datatable .p-datatable-tbody>tr>td:first-child {
+    border-left: 1px solid var(--color-border-default);
+}
+
+.p-datatable .p-datatable-tbody>tr:last-child>td {
+    border-bottom: 1px solid var(--color-border-default);
+}
+
+.p-datatable .p-datatable-tbody>tr.p-highlight {
+    background: var(--color-default-hover);
+    color: rgba(0, 0, 0, 0.87);
+}
+
+.p-datatable .p-datatable-tbody>tr:not(.p-highlight) {
+    background: white;
+    color: rgba(0, 0, 0, 0.87);
+}
+
+.p-datatable .p-datatable-tbody>tr:not(.p-highlight):hover {
+    background: var(--color-default-hover);
+}
+
+p-sorticon {
+    color: white;
+}
+
+.pi-sort-alt:before {
+    content: '\e915';
+    /* content: "";
+    background-image: url("assets/icons/equipos.svg");
+    background-size: 20px;
+    height: 20px;
+    width: 20px;
+    display: block; */
+}
+
+.pi-sort-amount-up-alt:before {
+    content: '\e914';
+}
+
+.pi-sort-amount-down:before {
+    content: '\e913';
+}
+
+.p-paginator {
+    background: var(--color-background);
+    color: var(--color-text-input);
+    border: solid var(--color-default-hover);
+    border-width: 0;
+    padding: 0.5rem 0;
+    border-radius: 5px;
+}
+
+.p-paginator .p-paginator-first,
+.p-paginator .p-paginator-prev,
+.p-paginator .p-paginator-next,
+.p-paginator .p-paginator-last {
+    background-color: transparent;
+    border: 0 none;
+    color: var(--color-text-input);
+    min-width: 3rem;
+    height: 3rem;
+    margin: 0.143rem;
+    transition: box-shadow 0.2s;
+    border-radius: 50%;
+}
+
+.p-paginator .p-paginator-first:not(.p-disabled):not(.p-highlight):hover,
+.p-paginator .p-paginator-prev:not(.p-disabled):not(.p-highlight):hover,
+.p-paginator .p-paginator-next:not(.p-disabled):not(.p-highlight):hover,
+.p-paginator .p-paginator-last:not(.p-disabled):not(.p-highlight):hover {
+    background: var(--color-default-hover);
+    border-color: transparent;
+    color: #343a40;
+}
+
+.p-paginator .p-paginator-first {
+    border-top-left-radius: 50%;
+    border-bottom-left-radius: 50%;
+}
+
+.p-paginator .p-paginator-last {
+    border-top-right-radius: 50%;
+    border-bottom-right-radius: 50%;
+}
+
+.p-paginator .p-dropdown {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+    height: 3rem;
+}
+
+.p-paginator .p-dropdown .p-dropdown-label {
+    padding-right: 0;
+}
+
+.p-paginator .p-paginator-page-input {
+    margin-left: 0.5rem;
+    margin-right: 0.5rem;
+}
+
+.p-paginator .p-paginator-page-input .p-inputtext {
+    max-width: 3rem;
+}
+
+.p-paginator .p-paginator-current {
+    background-color: transparent;
+    border: 0 none;
+    color: var(--color-text-input);
+    min-width: 3rem;
+    height: 3rem;
+    margin: 0.143rem;
+    padding: 0 0.5rem;
+}
+
+.p-paginator .p-paginator-pages .p-paginator-page {
+    background-color: transparent;
+    border: 0 none;
+
+    color: var(--color-paginator) !important;
+    font-weight: bold;
+    min-width: 3rem;
+    height: 3rem;
+    margin: 0.143rem;
+    transition: box-shadow 0.2s;
+    border-radius: 50%;
+}
+
+.p-paginator .p-paginator-pages .p-paginator-page.p-highlight {
+    background: #BFDAE8;
+    border-color: #BFDAE8;
+    color: var(--color-text-highlight);
+}
+
+.p-paginator .p-paginator-pages .p-paginator-page:not(.p-highlight):hover {
+    background: var(--color-default-hover);
+    border-color: transparent;
+    color: #343a40;
+}
+
+.p-paginator .p-dropdown {
+    margin-right: 0;
+}
+
+.p-fluid .p-dropdown {
+    display: flex;
+    align-items: center;
+    flex-wrap: wrap !important;
+}
+
+
+.p-paginator-current {
+    padding-left: 0px !important;
+    margin-right: auto !important;
+}
+
+.pagination-disabled button.p-paginator-element,
+.pagination-disabled div.p-paginator-rpp-options {
+    pointer-events: none;
+    cursor: not-allowed;
+}
+
+.p-paginator-icon{
+    font-weight: bold !important;
+    color: var(--color-default) !important;
+}
+
+.p-paginator  .p-dropdown .p-dropdown-label {
+    width: 1%;
+    color: var(--color-paginator) !important;
+    font-weight: bold;
+}
+
+.p-paginator .p-dropdown-trigger-icon{
+    color: var(--color-default) !important;
+    font-weight: bold !important;
+}

@@ -1,0 +1,15 @@
+.h-80{
+    height: 115px;
+    resize: none;
+}
+
+
+.color-text{
+    color: var(--color-base-1);
+}
+
+::ng-deep .p-datatable-scrollable-table>.p-datatable-thead {
+    position: sticky;
+    top: 0;
+    z-index: 0 !important;
+}

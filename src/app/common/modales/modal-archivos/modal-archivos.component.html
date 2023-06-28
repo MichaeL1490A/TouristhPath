@@ -1,0 +1,32 @@
+<div class="grid p-fluid">
+    <div class="col-12">
+        <div class="grid">
+            <!--CUERPO > INICIO-->
+                <div class="col-9">
+                    <span class="p-float-label p-float-label-static" (click)="descargarArchivo()">
+                        <input pInputText id="archivo" class="cursor-pointer" [(ngModel)]="nombre" [disabled]="true"/>
+                        <label htmlFor="archivo">Archivo</label>
+                    </span>
+                </div>
+                <div class="col-3 flex justify-content-end">
+                    <span style="--url-icon: url(assets/icons/acciones/abrir_archivo.svg) " class="mr-3">
+                        <p-button icon="pi" styleClass="button-default custom-icon " (onClick)="selectFile(arc)"  [disabled]="desactivar">
+                        </p-button>
+                        <input #arc id="archivo" name="file" style="display: none;" type="file"
+                        (change)="cargarArchivo($event)"/>
+                    </span>
+                    <span style="--url-icon: url(assets/icons/acciones/guardar.svg)" class="mr-3">
+                        <p-button icon="pi" styleClass="button-default custom-icon"
+                        (onClick)="guardarArchivo()" [disabled]="desactivar">
+                        </p-button>
+                    </span>
+                    <span style="--url-icon: url(assets/icons/acciones/cancelar.svg)">
+                        <p-button icon="pi" styleClass="custom-icon button-rojo"
+                        (onClick)="eliminarArchivo()" [disabled]="desactivar">
+                        </p-button>
+                    </span>
+                </div>
+            <!--CUERPO > FIN-->
+        </div>
+    </div>
+</div>

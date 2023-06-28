@@ -1,0 +1,46 @@
+<div class="grid p-fluid">
+    <div class="col-12 pb-0">
+        <div class="grid">
+            <div class="col-12 mb-4" style="height: 214px;">
+                <p-table [value]="listaObservacion" [scrollable]="true" scrollHeight="214px">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th style="width: 40px;">N</th>
+                            <th *ngIf="indMostrarTipo" style="width: 200px;">Tipo</th>
+                            <th >Observación</th>
+                            <th style="width: 60px;">
+                                <div class="custom-button-table-agregar" (click)="agregarObservacion()">+</div>
+                            </th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-observacion let-i="rowIndex">
+                        <tr>
+                            <td class="text-center">{{ i + 1 | number:'2.0-0' }}</td>
+                            <td  *ngIf="indMostrarTipo">
+                                <p-dropdown [options]="listaTipo" [(ngModel)]="observacion.tipo" optionLabel="nombre" appendTo="body" [autoDisplayFirst]="false" placeholder="Seleccione" [disabled]="soloLectura"></p-dropdown>       
+                            </td>
+                            <td >
+                                <input pInputText [(ngModel)]="observacion.descripcion" maxlength="400" [disabled]="soloLectura"/>
+                            </td>
+                            <td class="text-center">
+                                <div style="--url-icon: url(assets/icons/acciones/cancelar.svg)">
+                                    <p-button icon="pi" styleClass="button-rojo custom-icon" (onClick)="quitarObservacion(i)" [disabled]="soloLectura"></p-button>
+                                </div>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+        <div class="grid">
+            <div class="col-12 pb-0 flex justify-content-end">
+                <div style="--url-icon: url(assets/icons/acciones/cancelar.svg)">
+                    <p-button label="Salir" icon="pi" styleClass="button-rojo custom-icon" class="mr-3" (onClick)="cerrarModal()" [disabled]="blnOcupado"></p-button>
+                </div>
+                <div *ngIf="!soloLectura" style="--url-icon: url(assets/icons/acciones/guardar.svg)">
+                    <p-button label="Guardar" icon="pi" styleClass="button-default custom-icon" (onClick)="guardar()" [disabled]="blnOcupado"></p-button>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

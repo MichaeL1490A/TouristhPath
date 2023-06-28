@@ -1,0 +1,4 @@
+<app-header></app-header>
+<app-menu-lateral *ngIf="authService.isAuthenticated() && authService.modulos?.length > 0"></app-menu-lateral>
+<router-outlet></router-outlet>
+<p-toast></p-toast>

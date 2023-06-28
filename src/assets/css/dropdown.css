@@ -1,0 +1,84 @@
+/* ESTILOS DROPDOWN */
+.p-dropdown {
+    height: 33px;
+    background-color: white;
+    border-radius: 3px;
+    border: 1px solid var(--color-border-default);
+}
+
+.p-dropdown:not(.p-disabled):hover {
+    border-color: var(--color-border-hover);
+}
+
+.p-dropdown:not(.p-disabled).p-focus {
+    outline: 0 none;
+    outline-offset: 0;
+    box-shadow: none;
+    border-color: var(--color-border-selected);
+}
+
+.p-dropdown .p-inputtext {
+    border: 0 none;
+    height: 31px;
+    padding-top: 8px;
+    text-transform: uppercase;
+}
+
+.p-dropdown .p-dropdown-trigger {
+    background: transparent;
+    color: rgba(0, 0, 0, 0.6);
+    width: 2.75rem;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.p-dropdown-panel {
+    background: white;
+    color: var(--color-text-input);
+    border: 0 none;
+    border-radius: 3px;
+    box-shadow: 0 2px 4px -1px #0003, 0 4px 5px #00000024, 0 1px 10px #0000001f;
+    max-width: 900px;
+}
+
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item {
+    margin: 0;
+    padding: 0.75rem 0.75rem;
+    border: 0 none;
+    color: var(--color-text-input) !important;
+    max-width: 900px;
+    text-transform: uppercase;
+    background: transparent;
+    transition: none;
+    border-radius: 0;
+}
+
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item.p-highlight {
+    color: var(--color-text-input) !important;
+    background-color: var(--color-itemlist-selected);
+}
+
+.p-dropdown-panel .p-dropdown-items .p-dropdown-item:hover {
+    background-color: var(--color-default-hover);
+}
+
+.p-dropdown .p-dropdown-clear-icon {
+    color: var(--color-text-input);
+    right: 3rem;
+}
+
+.p-dropdown-panel .p-dropdown-items .p-dropdown-empty-message {
+    padding: 0.75rem 1.25rem;
+    color: var(--color-text-input);
+    background: transparent;
+}
+
+.p-datatable .p-dropdown {
+    border: 0 none;
+    background-color: transparent;
+}
+
+.p-datatable .p-dropdown .p-inputtext {
+    background-color: transparent;
+    padding-left: 0;
+}
