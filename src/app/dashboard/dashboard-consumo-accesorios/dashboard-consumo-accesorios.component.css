@@ -1,7 +1,0 @@
-:host ::ng-deep .header-subtable{
-    background-color: var(--color-rojo) !important;
-}
-
-:host ::ng-deep .body-subtable{
-    background-color: #FFDEE6!important;
-}
