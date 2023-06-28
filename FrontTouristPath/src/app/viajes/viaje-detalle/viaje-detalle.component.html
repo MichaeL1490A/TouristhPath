@@ -6,7 +6,7 @@
                 <div class="col-9">
                     <div class="grid">
                         <div class="col-12 titulo">NUEVO AMANECER</div>
-                        <div class="col-12">
+                        <div class="col-12" *ngIf="id != 0">
                             <div class="grid">
                                 <div class="col-2">
                                     <span class="vertical-align-middle">FECHA DE SALIDA</span>
@@ -36,14 +36,16 @@
                                     (onClick)="guardar()"></p-button>
                             </div>
                             <div style="--url-icon: url(assets/icons/acciones/cancelar.svg)" class="mb-2 ml-2">
-                                <p-button label="Salir" icon="pi" styleClass="button-default custom-icon"
-                                    onClick="nuevoTicket()"></p-button>
+                                <p-button label="Salir" icon="pi" styleClass="button-default custom-icon button-rojo"
+                                    (onClick)="salir()"></p-button>
                             </div>
-                            <div style="--url-icon: url(assets/icons/acciones/agregar.svg)" class="mb-2 ml-2">
+                            <div style="--url-icon: url(assets/icons/acciones/agregar.svg)" class="mb-2 ml-2"
+                                *ngIf="id != 0">
                                 <p-button label="Nuevo" icon="pi" styleClass="button-default custom-icon"
                                     onClick="limpiarFiltros()"></p-button>
                             </div>
-                            <div style="--url-icon: url(assets/icons/acciones/cancelar.svg)" class="mb-2 ml-2">
+                            <div style="--url-icon: url(assets/icons/acciones/cancelar.svg)" class="mb-2 ml-2"
+                                *ngIf="id != 0">
                                 <p-button label="Anular" icon="pi" styleClass="button-default custom-icon button-rojo"
                                     onClick="exportarLista()"></p-button>
                             </div>
@@ -53,9 +55,9 @@
             </div>
 
             <div class="grid mt-3">
-                <div class="col-4">
-                    <p-galleria [showThumbnails]="false" [showIndicators]="true"
-                        [containerStyle]="{ 'width': '500px', 'margin-top': '0.5rem' }" [showItemNavigators]="true">
+                <div class="col-4">            
+                    <p-galleria [value]="viaje.archivos" [showThumbnails]="false" [showIndicators]="true"
+                        [containerStyle]="{ 'width': '400px', 'margin-top': '0.5rem' }" [showItemNavigators]="true">
                         <ng-template pTemplate="item" let-item>
                             <img [src]="item.fotoUrl  | authImage | async"
                                 style="width: 100%; max-height: 50vh; display: block;" />
@@ -70,10 +72,10 @@
                                     PASAJEROS
                                 </div>
                                 <div class="col-12 text-center circle-resumen">
-                                    <span class="p-float-label p-float-label-static ">
-                                        <input pInputText id="obs1" maxlength="120"
+                                    <span class="p-float-label p-float-label-static input-circle ">120
+                                        <!-- <input pInputText id="obs1" maxlength="120"
                                             [(ngModel)]="viaje.pasajeros"
-                                            class="text-center input-circle" />
+                                            class="text-center input-circle" /> -->
                                     </span>
                                 </div>
                             </div>

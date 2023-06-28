@@ -28,4 +28,5 @@ export class Viaje{
 	fechaCrea: Date;
 	fechaModifica: Date;
 	pasajero: ViajePasajero[];
+	archivos: any[] = [];
 }

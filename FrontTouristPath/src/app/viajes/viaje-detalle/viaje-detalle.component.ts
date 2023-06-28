@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { ActivatedRoute } from '@angular/router';
+import { ActivatedRoute, Router } from '@angular/router';
 import { Viaje } from '../models/viaje';
 import { TablaAuxiliarService } from 'src/app/configuracion/tabla-auxiliar/tabla-auxiliar.service';
 import { UbigeoService } from 'src/app/ubigeo/ubigeo.service';
@@ -32,10 +32,21 @@ export class ViajeDetalleComponent {
   listaDistritoOrigen: Distrito[];
   listaDistritoDestino: Distrito[];
 
+  _activeIndex: number = 0;
+  get activeIndex(): number {
+    return this._activeIndex;
+  }
+
+  set activeIndex(newValue) {
+//    if (this.equipo.fotosActivas && 0 <= newValue && newValue <= this.equipo.fotosActivas?.length - 1) {
+//        this._activeIndex = newValue;
+//    }
+  }
 
 
 
   constructor(
+    private router: Router,
     private activatedRoute: ActivatedRoute,
     private auxiliarService: TablaAuxiliarService,
     private ubigeroService: UbigeoService,
@@ -71,6 +82,10 @@ export class ViajeDetalleComponent {
   }
 
   nuevoViaje(){
+    let archivo = {
+      fotoUrl: 'https://lh3.googleusercontent.com/atMuLhGMqOCbCSn69HvtfA4LNnOVQIJOgtp9lzv3uIWzfl2wBBlKQnzfR7M8sBLM32Xa6pcFulTrOt-SuO49sZTgDiihHIVAu5PHCfo'
+    };
+    this.viaje.archivos.push(archivo)
 
   }
 
@@ -102,6 +117,8 @@ export class ViajeDetalleComponent {
     console.log(this.viaje)
   }
 
-
+  salir(){
+    this.router.navigateByUrl("/viaje/listado");
+  }
 }
 
