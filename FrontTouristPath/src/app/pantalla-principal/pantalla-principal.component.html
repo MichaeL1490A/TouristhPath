@@ -1,195 +1,198 @@
 <div class="container">
-    <p>pantalla-principal works!</p>
-    
-    <div class="container">
+    <div class="grid p-fluid mt-2">
+        <div class="col-12">
+            <div class="grid">
+
+                <div class="col-4 pl-3" style="font-size: 30px; font-weight: 70px;">
+                    Bienvenido a Tourist Path
+                </div>
+                <div class="col-1 pt-3">
+                    <p-button icon="pi pi-microphone" styleClass="button-default "
+                    (click)="startListening()"></p-button>
+                </div>
+                <div class="col-7 pt-3">
+                    <div class="grid">
+                        <div class="col-6">
+                            <input pInputText [(ngModel)]="transcript" (keyup)="search()" placeholder="Buscar...">
+                        </div>
+                        <div class="col-2">
+                            <p-button label="Buscar" icon="pi pi-search" styleClass="button-default "
+                            (click)="search()"></p-button>
+                        </div>
+                        <div class="col-4">
+
+                        </div>
+                    </div>
+                </div>
+                <div class="col-12">
+                    <div class="grid">
+                        <div class="col-2 social-buttons-container">
+                            <p-button (click)="compartirEnRedes()" class="facebook-button" icon="pi pi-facebook" ></p-button>
+                            <p-button (click)="compartirEnRedes()" class="twitter-button" icon="pi pi-twitter"></p-button>
+                            <p-button (click)="compartirEnRedes()" class="instagram-button" icon="pi pi-instagram"></p-button>
+                            <p-button (click)="compartirEnRedes()" class="linkedin-button" icon="pi pi-linkedin"></p-button>
+                        </div>    
+                        <div class="col-2">
+                            <p>Tu puntuación actual es: {{ puntos }}</p>
+                        </div>
+                        <div class="field col-3">
+                            <div class="flex flex-column">
+                                <div class="flex justify-content-end flex-wrap">
+                                    <span style="--url-icon: url(assets/icons/acciones/agregar.svg)" class="mb-2 ml-2" >
+                                        <p-button label="Reservar" (click)="reservarViaje()" icon="pi" 
+                                        styleClass="button-default custom-icon"></p-button>    
+                                    </span>
+                                    <span style="--url-icon: url(assets/icons/acciones/agregar.svg)"  class="mb-2 ml-2">
+                                        <p-button label="Reseña" (click)="dejarResenia()" icon="pi"                                                
+                                        styleClass="button-default custom-icon"></p-button>            
+                                    </span>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-5">
+
+                        </div>
         
-            <section class="hero">
-              <h1>Bienvenido a Tourist Path</h1>
-              <p>Explora el mundo y descubre aventuras inolvidables</p>
-            </section>
-        
-          <div class="social-buttons-container">
-            <p-button (click)="compartirEnRedes()" class="facebook-button" icon="pi pi-facebook"></p-button>
-            <p-button (click)="compartirEnRedes()" class="twitter-button" icon="pi pi-twitter"></p-button>
-            <p-button (click)="compartirEnRedes()" class="instagram-button" icon="pi pi-instagram"></p-button>
-            <p-button (click)="compartirEnRedes()" class="linkedin-button" icon="pi pi-linkedin"></p-button>
-          </div>
-          
-        <div >
-            <p>Tu puntuación actual es: {{ puntos }}</p>
-            <button (click)="reservarViaje()">Reservar un viaje</button>
-            <button (click)="dejarResenia()">Dejar una resenia</button>
-    
-            <div *ngIf="premioEspecialDesbloqueado">
-                <h3>¡Has desbloqueado un premio especial!</h3>
-                <p>Disfruta de un descuento del 10% en tu próximo viaje.</p>
-            </div>
-        </div>  
-    </div>
-    <br/><br/><br/><br/><br/>
-    <div class="container">
-        <p>voice-recognition works!</p>
-        <div>
-            <button (click)="startListening()">Iniciar reconocimiento de voz</button>
-            <button (click)="startListening()"><i class="fas fa-microphone"></i>Iniciar reconocimiento de voz</button>
-            <button (click)="startListening()" pButton type="button" icon="pi pi-microphone" ></button>
-
-            <p>{{ transcript }}</p>
-            <label >{{ transcript }}</label>
-        </div>
-        <br/>
-        <div class="search-bar-container">
-            <input type="text" [(ngModel)]="transcript" (keyup)="search()" placeholder="Buscar..." class="search-bar-input">
-            <button class="search-bar-button" (click)="search()">Buscar</button>
-        </div>
-    </div>
-    
-      
-    <div class="container">
-        <div class="grid mt-4">
-            <div class="col-12 subtitulo uppercase">
-                Lugares Turisticos
-            </div>
-        </div>
-        <div class="todo100">
-            <div class="image-container" ><img alt="Imagen" class="image" src="./assets/images/lugares/lima-peru.jpg"><p style="text-align: center;">Lima, Peru</p></div>
-            <div class="image-container"><img alt="Imagen" class="image"src="./assets/images/lugares/paracas-peru.jpg" ><p style="text-align: center;">Paracas, Peru</p></div>
-     
-            <div class="image-container"><img alt="Imagen" class="image"src="./assets/images/lugares/lunahuana-peru.jpg" ><p style="text-align: center;">Lunahuana, Peru</p></div>
-            <div class="image-container"><img alt="Imagen" class="image"src="./assets/images/lugares/cusco-peru.jpg"><p style="text-align: center;">Cusco, Peru</p></div>
-            
-        </div>
-    </div>
+                    </div>                  
+                </div>
 
 
-
-    <div class="container">
-        <div class="grid mt-4">
-            <div class="col-12 subtitulo uppercase">
-                Tours populares
-            </div>
-        </div>
-        <div class="todo100">
-            <div class="image-container" >
-                <img src="./assets/images/tour/alpaca-tour.jpg" alt="Imagen" class="image">
-                <button pButton type="button" [icon]="isFavorite ? 'pi pi-heart' : 'pi pi-heart-o'"
-                [ngClass]="{'favorite-icon-selected': isFavorite}"
-                (click)="toggleFavorite()" class="favorite-icon"></button>
-                <p style="text-align: left ;">Alpaca Expeditions</p>
+                <div class="col-12">
+                    <div class="grid mt-4">
+                        <div class="col-12 subtitulo uppercase">
+                            Lugares Turisticos
+                        </div>
+                        <div class="col-12">
+                            <div class="image-container" ><img alt="Imagen" class="image" src="./assets/images/lugares/lima-peru.jpg"><p style="text-align: center;">Lima, Peru</p></div>
+                            <div class="image-container"><img alt="Imagen" class="image"src="./assets/images/lugares/paracas-peru.jpg" ><p style="text-align: center;">Paracas, Peru</p></div>
+                            <div class="image-container"><img alt="Imagen" class="image"src="./assets/images/lugares/lunahuana-peru.jpg" ><p style="text-align: center;">Lunahuana, Peru</p></div>
+                            <div class="image-container"><img alt="Imagen" class="image"src="./assets/images/lugares/cusco-peru.jpg"><p style="text-align: center;">Cusco, Peru</p></div>
+                        </div>    
+                    </div>
+                </div>
                 
-                <div class="rating">
-                    
-                    <input type="radio" id="star5" name="rating" value="5" />
-                    <label for="star5">7,589</label>
-                    <input type="radio" id="star4" name="rating" value="4" />
-                    <label for="star4"></label>
-                    <input type="radio" id="star3" name="rating" value="3" />
-                    <label for="star3"></label>
-                    <input type="radio" id="star2" name="rating" value="2" />
-                    <label for="star2"></label>
-                    <input type="radio" id="star1" name="rating" value="1" />
-                    <label for="star1"></label>
-                    
-                    
-                  </div>
-                <p style="text-align: left;">Tours Turisticos</p>
-                <p style="text-align: left;">Cusco - Peru</p>
-            </div>
-
-            <div class="image-container" >
-                <img src="./assets/images/tour/inca-tour.jpg" alt="Imagen" class="image">
-                <button pButton type="button" [icon]="isFavorite ? 'pi pi-heart' : 'pi pi-heart-o'"
-                [ngClass]="{'favorite-icon-selected': isFavorite}"
-                (click)="toggleFavorite()" class="favorite-icon"></button>
-            
-                <p style="text-align: left;">Inca Trail</p>
-                <div class="rating">
-                    <input type="radio" id="star5" name="rating" value="5" />
-                    <label for="star5">7,589</label>
-                    <input type="radio" id="star4" name="rating" value="4" />
-                    <label for="star4"></label>
-                    <input type="radio" id="star3" name="rating" value="3" />
-                    <label for="star3"></label>
-                    <input type="radio" id="star2" name="rating" value="2" />
-                    <label for="star2"></label>
-                    <input type="radio" id="star1" name="rating" value="1" />
-                    <label for="star1"></label>
-                  </div>
-                <p style="text-align: left;">Tours Turisticos</p>
-                <p style="text-align: left;">Cusco - Peru</p>
-            </div>
-            <div class="image-container" >
-                <img src="./assets/images/tour/llama-tour.jpg" alt="Imagen" class="image">
-                <button pButton type="button" [icon]="isFavorite ? 'pi pi-heart' : 'pi pi-heart-o'"
-                [ngClass]="{'favorite-icon-selected': isFavorite}"
-                (click)="toggleFavorite()" class="favorite-icon"></button>
-
-                <p style="text-align: left;">Llama Path</p>
-                <div class="rating">
-                    <input type="radio" id="star5" name="rating" value="5" />
-                    <label for="star5">7,589</label>
-                    <input type="radio" id="star4" name="rating" value="4" />
-                    <label for="star4"></label>
-                    <input type="radio" id="star3" name="rating" value="3" />
-                    <label for="star3"></label>
-                    <input type="radio" id="star2" name="rating" value="2" />
-                    <label for="star2"></label>
-                    <input type="radio" id="star1" name="rating" value="1" />
-                    <label for="star1"></label>
-                  </div>
-                <p style="text-align: left;">Tours Turisticos</p>
-                <p style="text-align: left;">Cusco - Peru</p>
-            </div>
-            <div class="image-container" >
-                <img  src="./assets/images/tour/salkantay-tour.jpg" alt="Imagen" class="image">
-                <button pButton type="button" [icon]="isFavorite ? 'pi pi-heart' : 'pi pi-heart-o'"
-                [ngClass]="{'favorite-icon-selected': isFavorite}"
-                (click)="toggleFavorite()" class="favorite-icon"></button>
-
-                <p style="text-align: left;">Salkantay</p>
-                <div class="rating" >
-                    <input type="radio" id="star5" name="rating" value="5" />
-                    <label for="star5">7,589</label>
-                    <input type="radio" id="star4" name="rating" value="4" />
-                    <label for="star4"></label>
-                    <input type="radio" id="star3" name="rating" value="3" />
-                    <label for="star3"></label>
-                    <input type="radio" id="star2" name="rating" value="2" />
-                    <label for="star2"></label>
-                    <input type="radio" id="star1" name="rating" value="1" />
-                    <label for="star1"></label>
-                    
-                  </div>
+                <div class="col-12">
+                    <div class="grid mt-4">
+                        <div class="col-12 subtitulo uppercase">
+                            Tours populares
+                        </div>
+                        <div class="col-12">
+                            <div class="image-container" >
+                                <img src="./assets/images/tour/alpaca-tour.jpg" alt="Imagen" class="image">
+                                <button pButton type="button" [icon]="isFavorite ? 'pi pi-heart' : 'pi pi-heart-o'"
+                                [ngClass]="{'favorite-icon-selected': isFavorite}"
+                                (click)="toggleFavorite()" class="favorite-icon"></button>
+                                <p style="text-align: left ;">Alpaca Expeditions</p>
+                                
+                                <div class="rating">
+                                    
+                                    <input type="radio" id="star5" name="rating" value="5" />
+                                    <label for="star5">7,589</label>
+                                    <input type="radio" id="star4" name="rating" value="4" />
+                                    <label for="star4"></label>
+                                    <input type="radio" id="star3" name="rating" value="3" />
+                                    <label for="star3"></label>
+                                    <input type="radio" id="star2" name="rating" value="2" />
+                                    <label for="star2"></label>
+                                    <input type="radio" id="star1" name="rating" value="1" />
+                                    <label for="star1"></label>
+                                    
+                                    
+                                    </div>
+                                <p style="text-align: left;">Tours Turisticos</p>
+                                <p style="text-align: left;">Cusco - Peru</p>
+                            </div>
                 
-                <p style="text-align: left;">Tours Turisticos</p>
-                <p style="text-align: left;">Cusco - Peru</p>
+                            <div class="image-container" >
+                                <img src="./assets/images/tour/inca-tour.jpg" alt="Imagen" class="image">
+                                <button pButton type="button" [icon]="isFavorite ? 'pi pi-heart' : 'pi pi-heart-o'"
+                                [ngClass]="{'favorite-icon-selected': isFavorite}"
+                                (click)="toggleFavorite()" class="favorite-icon"></button>
+                            
+                                <p style="text-align: left;">Inca Trail</p>
+                                <div class="rating">
+                                    <input type="radio" id="star5" name="rating" value="5" />
+                                    <label for="star5">7,589</label>
+                                    <input type="radio" id="star4" name="rating" value="4" />
+                                    <label for="star4"></label>
+                                    <input type="radio" id="star3" name="rating" value="3" />
+                                    <label for="star3"></label>
+                                    <input type="radio" id="star2" name="rating" value="2" />
+                                    <label for="star2"></label>
+                                    <input type="radio" id="star1" name="rating" value="1" />
+                                    <label for="star1"></label>
+                                    </div>
+                                <p style="text-align: left;">Tours Turisticos</p>
+                                <p style="text-align: left;">Cusco - Peru</p>
+                            </div>
+                            <div class="image-container" >
+                                <img src="./assets/images/tour/llama-tour.jpg" alt="Imagen" class="image">
+                                <button pButton type="button" [icon]="isFavorite ? 'pi pi-heart' : 'pi pi-heart-o'"
+                                [ngClass]="{'favorite-icon-selected': isFavorite}"
+                                (click)="toggleFavorite()" class="favorite-icon"></button>
+                
+                                <p style="text-align: left;">Llama Path</p>
+                                <div class="rating">
+                                    <input type="radio" id="star5" name="rating" value="5" />
+                                    <label for="star5">7,589</label>
+                                    <input type="radio" id="star4" name="rating" value="4" />
+                                    <label for="star4"></label>
+                                    <input type="radio" id="star3" name="rating" value="3" />
+                                    <label for="star3"></label>
+                                    <input type="radio" id="star2" name="rating" value="2" />
+                                    <label for="star2"></label>
+                                    <input type="radio" id="star1" name="rating" value="1" />
+                                    <label for="star1"></label>
+                                    </div>
+                                <p style="text-align: left;">Tours Turisticos</p>
+                                <p style="text-align: left;">Cusco - Peru</p>
+                            </div>
+                            <div class="image-container" >
+                                <img  src="./assets/images/tour/salkantay-tour.jpg" alt="Imagen" class="image">
+                                <button pButton type="button" [icon]="isFavorite ? 'pi pi-heart' : 'pi pi-heart-o'"
+                                [ngClass]="{'favorite-icon-selected': isFavorite}"
+                                (click)="toggleFavorite()" class="favorite-icon"></button>
+                
+                                <p style="text-align: left;">Salkantay</p>
+                                <div class="rating" >
+                                    <input type="radio" id="star5" name="rating" value="5" />
+                                    <label for="star5">7,589</label>
+                                    <input type="radio" id="star4" name="rating" value="4" />
+                                    <label for="star4"></label>
+                                    <input type="radio" id="star3" name="rating" value="3" />
+                                    <label for="star3"></label>
+                                    <input type="radio" id="star2" name="rating" value="2" />
+                                    <label for="star2"></label>
+                                    <input type="radio" id="star1" name="rating" value="1" />
+                                    <label for="star1"></label>
+                                    
+                                    </div>
+                                
+                                <p style="text-align: left;">Tours Turisticos</p>
+                                <p style="text-align: left;">Cusco - Peru</p>
+                            </div>
+                        </div>
+
+                    </div>
+                </div>
+
+                <div class="col-12">
+                    <div class="grid mt-4">
+                        <div class="col-12 subtitulo uppercase">
+                            Viajes en el Perú 
+                        </div>
+                        <div class="col-12">
+                            <div class="image-container"><img alt="Imagen" class="image" src="./assets/images/viaje/bus blanco.jpg"><p style="text-align: center;">Lima - Cusco</p></div>
+                            <div class="image-container"><img alt="Imagen" class="image" src="./assets/images/viaje/bus rojo.jpg" ><p style="text-align: center;">Lima - Ayacucho</p></div>
+                     
+                            <div class="image-container"><img alt="Imagen" class="image"src="./assets/images/viaje/bus azul.jpg" ><p style="text-align: center;">Lima - Ica</p></div>
+                            <div class="image-container"><img alt="Imagen" class="image" src="./assets/images/viaje/bus blanco.jpg"><p style="text-align: center;">Lima - La Libertad</p></div>
+                        </div>                          
+                    </div>
+                </div>            
+
+
             </div>
-            
-
-            
-        </div>
-    </div>
-
-
-
-
-    <div class="container">
-        <div class="grid mt-4">
-            <div class="col-12 subtitulo uppercase">
-                Viajes en el Perú 
-            </div>
-            
-              
-              
-        </div>
-        <div class="todo100">
-            <div class="image-container"><img alt="Imagen" class="image" src="./assets/images/viaje/bus blanco.jpg"><p style="text-align: center;">Lima - Cusco</p></div>
-            <div class="image-container"><img alt="Imagen" class="image" src="./assets/images/viaje/bus rojo.jpg" ><p style="text-align: center;">Lima - Ayacucho</p></div>
-     
-            <div class="image-container"><img alt="Imagen" class="image"src="./assets/images/viaje/bus azul.jpg" ><p style="text-align: center;">Lima - Ica</p></div>
-            <div class="image-container"><img alt="Imagen" class="image" src="./assets/images/viaje/bus blanco.jpg"><p style="text-align: center;">Lima - La Libertad</p></div>
-            
         </div>
     </div>
 </div>
-

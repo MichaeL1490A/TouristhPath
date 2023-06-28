@@ -1,5 +1,6 @@
 import { Component, Injector, NgZone, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
+import { MessageService } from 'primeng/api';
 @Component({
   selector: 'app-pantalla-principal',
   templateUrl: './pantalla-principal.component.html',
@@ -14,7 +15,10 @@ export class PantallaPrincipalComponent implements OnInit{
   private router: Router;
   isCommandExecuted: boolean = false;
 
-  constructor(private ngZone: NgZone, private injector: Injector) {
+  constructor(
+    private ngZone: NgZone, 
+    private injector: Injector,
+    private messageService: MessageService) {
     this.recognition = new (window as any).webkitSpeechRecognition();
     this.recognition.lang = 'es-ES';
     this.recognition.continuous = true;
@@ -122,9 +126,11 @@ export class PantallaPrincipalComponent implements OnInit{
     this.comprobarDesafio();
   }
 
+
   comprobarDesafio() {
     if (this.puntos >= 100) {
       this.premioEspecialDesbloqueado = true;
+      this.messageService.add({severity:'success', summary: 'Felicidades', detail:'¡Has desbloqueado un premio especial!.Disfruta de un descuento del 10% en tu próximo viaje.'})
     }
   }
 

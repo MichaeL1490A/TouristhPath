@@ -1,6 +1,6 @@
 <p-menubar>
     <ng-template pTemplate="start">
-        <label>{{ menu }}</label>
+        <label (click)="goPantallaPrincipal()" class="cursor-pointer">{{ menu }}</label>
     </ng-template>
     <ng-template pTemplate="end">
         <div  class="vertical-align-middle my-auto notificacion">

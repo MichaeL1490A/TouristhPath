@@ -54,4 +54,7 @@ export class HeaderComponent {
     this.authService.logout();
     this.router.navigate(['/login']);
   }
+  goPantallaPrincipal(){
+    this.router.navigateByUrl("/pantalla/principal");
+  }
 }
