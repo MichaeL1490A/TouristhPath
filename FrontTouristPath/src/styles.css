@@ -351,9 +351,9 @@ tbody .custom-icon.p-button .p-button-icon {
 .circle-resumen {
     border-radius: 50%;
     border: 1px solid #aaaaaa;
-    height: 140px;
+    height: 128px;
     background-color: #FFFFFF;
-    padding-top: 50px;
+    padding-top: 45px;
 }
 
 .input-circle {

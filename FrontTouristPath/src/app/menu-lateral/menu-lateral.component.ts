@@ -17,7 +17,7 @@ export class MenuLateralComponent {
   nombresMenu: string[] = ["VIAJES", "TOURS", "LUGARES"];
   opcionesMenu: any[] = [ 
     [{label: 'Viajes', routerLink: '/viaje/listado'},
-     {label: 'Agregar Viajes', routerLink: '/viaje/detalle'},
+     {label: 'Agregar Viajes', routerLink: '/viaje/detalle/0'},
      {label: 'Dashboard', routerLink: '/viaje/dashboard'}],
     [{label: 'Tours', routerLink: '/tour/listado'},
      {label: 'Agregar Tour', routerLink: '/tour/detalle'},

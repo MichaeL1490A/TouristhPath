@@ -33,7 +33,7 @@
                         <div class="flex justify-content-end flex-wrap">
                             <div style="--url-icon: url(assets/icons/acciones/guardar.svg)" class="mb-2 ml-2">
                                 <p-button label="Guardar" icon="pi" styleClass="button-default custom-icon"
-                                    onClick="nuevoEquipos()"></p-button>
+                                    (onClick)="guardar()"></p-button>
                             </div>
                             <div style="--url-icon: url(assets/icons/acciones/cancelar.svg)" class="mb-2 ml-2">
                                 <p-button label="Salir" icon="pi" styleClass="button-default custom-icon"
@@ -71,7 +71,8 @@
                                 </div>
                                 <div class="col-12 text-center circle-resumen">
                                     <span class="p-float-label p-float-label-static ">
-                                        <input pInputText id="obs1" maxlength="120" ngModel="100"
+                                        <input pInputText id="obs1" maxlength="120"
+                                            [(ngModel)]="viaje.pasajeros"
                                             class="text-center input-circle" />
                                     </span>
                                 </div>
@@ -84,7 +85,8 @@
                                 </div>
                                 <div class="col-12 text-center circle-resumen">
                                     <span class="p-float-label p-float-label-static ">
-                                        <input pInputText id="obs1" maxlength="120" ngModel="100.00"
+                                        <input pInputText id="obs1" maxlength="120"
+                                            [(ngModel)]="viaje.precioRegular"
                                             class="text-center input-circle" />
                                         PEN
                                     </span>
@@ -98,7 +100,8 @@
                                 </div>
                                 <div class="col-12 text-center circle-resumen">
                                     <span class="p-float-label p-float-label-static ">
-                                        <input pInputText id="obs1" maxlength="120" ngModel="190.00"
+                                        <input pInputText id="obs1" maxlength="120"
+                                        [(ngModel)]="viaje.precioVip"
                                             class="text-center input-circle" />
                                         PEN
                                     </span>
@@ -127,7 +130,8 @@
                                 </div>
                                 <div class="col-12 text-center circle-resumen">
                                     <span class="p-float-label p-float-label-static ">
-                                        <input pInputText id="obs1" maxlength="120" ngModel="7"
+                                        <input pInputText id="obs1" maxlength="120"
+                                            [(ngModel)]="viaje.horasViaje"
                                             class="text-center input-circle" />
                                         HORAS
                                     </span>
@@ -142,7 +146,7 @@
                 <div class="col-6">
                     <span class="p-float-label p-float-label-static">
                         <textarea class="h-80" pInputTextarea maxlength="240" maxlength="240" id="observaciones"
-                            style="resize:none"></textarea>
+                            style="resize:none" [(ngModel)]="viaje.descripcion"></textarea>
                         <label htmlFor="observaciones">Descripción&nbsp;del&nbsp;Viaje</label>
                     </span>
                 </div>
@@ -156,18 +160,15 @@
                         </div>
                         <div class="col-5">
                             <span class="p-float-label p-float-label-static">
-                                <p-calendar id="fechaTicket" selectionMode="single"
-                                    placeholder="Seleccione fecha inicial">
-                                    <!--                             [(ngModel)]="rangoFechaTicket"
-                                (onSelect)="tticket.filter(f.calendarRangeToString(rangoFechaTicket,'fechaFin',datePipe), 'fechaInicio', 'equals')"
-                                (onInput)="tticket.filter(f.calendarRangeToString(rangoFechaTicket,'fechaFin',datePipe), 'fechaFin', 'equals')">-->
+                                <p-calendar id="fechaTicket" selectionMode="single" placeholder="Seleccione"
+                                    [(ngModel)]="viaje.diaSalida">
                                 </p-calendar>
                                 <label htmlFor="fechaTicket">Día&nbsp;de&nbsp;Salida</label>
                             </span>
                         </div>
                         <div class="col-5">
                             <span class="p-float-label p-float-label-static">
-                                <p-dropdown ngModel="clienteDistrito" optionLabel="descripcion" id="red"
+                                <p-dropdown [(ngModel)]="viaje.oferta" optionLabel="descripcion" id="red"
                                     [autoDisplayFirst]="false" appendTo="body" placeholder="Seleccione"></p-dropdown>
                                 <label htmlFor="red">Oferta<span class="campo-obligatorio"> *</span></label>
                             </span>
@@ -180,7 +181,8 @@
                         </div>
                         <div class="col-5">
                             <span class="p-float-label p-float-label-static">
-                                <p-inputNumber inputId="gara" suffix=" meses" [min]="0" [max]="100"></p-inputNumber>
+                                <p-inputNumber inputId="gara" suffix=" meses" [min]="0" [max]="100"
+                                    [(ngModel)]="viaje.totalPasajeros"></p-inputNumber>
                                 <label htmlFor="gara">Total&nbsp;Pasajeros</label>
                             </span>
                         </div>
@@ -206,34 +208,37 @@
                 </div>
                 <div class="col">
                     <span class="p-float-label p-float-label-static w-full">
-                        <input pInputText id="obs1" maxlength="120" />
+                        <input pInputText id="obs1" maxlength="120" [(ngModel)]="viaje.origenTerminalSalida"/>
                         <label htmlFor="obs1">Terminal&nbsp;Salida</label>
                     </span>
                 </div>
                 <div class="col">
                     <span class="p-float-label p-float-label-static">
-                        <p-dropdown ngModel="clienteDistrito" optionLabel="descripcion" id="red"
+                        <p-dropdown [(ngModel)]="origenDepartamento" optionLabel="descripcion" id="red" 
+                            [options]="listaDepartamentos" (onChange)="getProvincia(origenDepartamento, 0)"
                             [autoDisplayFirst]="false" appendTo="body" placeholder="Seleccione"></p-dropdown>
                         <label htmlFor="red">Departamento<span class="campo-obligatorio"> *</span></label>
                     </span>
                 </div>
                 <div class="col">
                     <span class="p-float-label p-float-label-static">
-                        <p-dropdown ngModel="clienteDistrito" optionLabel="descripcion" id="red"
+                        <p-dropdown [(ngModel)]="origenProvincia" optionLabel="descripcion" id="red"
+                            [options]="listaProvinciaOrigen" (onChange)="getDistrito(origenProvincia, 0)"
                             [autoDisplayFirst]="false" appendTo="body" placeholder="Seleccione"></p-dropdown>
                         <label htmlFor="red">Provincia<span class="campo-obligatorio"> *</span></label>
                     </span>
                 </div>
                 <div class="col">
                     <span class="p-float-label p-float-label-static">
-                        <p-dropdown ngModel="clienteDistrito" optionLabel="descripcion" id="red"
+                        <p-dropdown [(ngModel)]="viaje.origenDistrito" optionLabel="descripcion" id="red"
+                            [options]="listaDistritoOrigen"
                             [autoDisplayFirst]="false" appendTo="body" placeholder="Seleccione"></p-dropdown>
                         <label htmlFor="red">Distrito<span class="campo-obligatorio"> *</span></label>
                     </span>
                 </div>
                 <div class="col">
                     <span class="p-float-label p-float-label-static w-full">
-                        <input pInputText id="obs1" maxlength="120" />
+                        <input pInputText id="obs1" maxlength="120" [(ngModel)]="viaje.origenDireccion"/>
                         <label htmlFor="obs1">Dirección</label>
                     </span>
                 </div>
@@ -248,34 +253,37 @@
                 </div>
                 <div class="col">
                     <span class="p-float-label p-float-label-static w-full">
-                        <input pInputText id="obs1" maxlength="120" />
+                        <input pInputText id="obs1" maxlength="120" [(ngModel)]="viaje.destinoTerminalLlegada"/>
                         <label htmlFor="obs1">Terminal&nbsp;de&nbsp;Llegada</label>
                     </span>
                 </div>
                 <div class="col">
                     <span class="p-float-label p-float-label-static">
-                        <p-dropdown ngModel="clienteDistrito" optionLabel="descripcion" id="red"
+                        <p-dropdown [(ngModel)]="destinoDepartamento" optionLabel="descripcion" id="red"
+                            [options]="listaDepartamentos" (onChange)="getProvincia(destinoDepartamento, 1)"
                             [autoDisplayFirst]="false" appendTo="body" placeholder="Seleccione"></p-dropdown>
                         <label htmlFor="red">Departamento<span class="campo-obligatorio"> *</span></label>
                     </span>
                 </div>
                 <div class="col">
                     <span class="p-float-label p-float-label-static">
-                        <p-dropdown ngModel="clienteDistrito" optionLabel="descripcion" id="red"
+                        <p-dropdown [(ngModel)]="destinoProvincia" optionLabel="descripcion" id="red"
+                            [options]="listaProvinciaDestino" (onChange)="getDistrito(destinoProvincia, 1)"
                             [autoDisplayFirst]="false" appendTo="body" placeholder="Seleccione"></p-dropdown>
                         <label htmlFor="red">Provincia<span class="campo-obligatorio"> *</span></label>
                     </span>
                 </div>
                 <div class="col">
                     <span class="p-float-label p-float-label-static">
-                        <p-dropdown ngModel="clienteDistrito" optionLabel="descripcion" id="red"
+                        <p-dropdown [(ngModel)]="viaje.destinoDistrito" optionLabel="descripcion" id="red"
+                            [options]="listaDistritoDestino"
                             [autoDisplayFirst]="false" appendTo="body" placeholder="Seleccione"></p-dropdown>
                         <label htmlFor="red">Distrito<span class="campo-obligatorio"> *</span></label>
                     </span>
                 </div>
                 <div class="col">
                     <span class="p-float-label p-float-label-static w-full">
-                        <input pInputText id="obs1" maxlength="120" />
+                        <input pInputText id="obs1" maxlength="120" [(ngModel)]="viaje.destinoDireccion"/>
                         <label htmlFor="obs1">Dirección</label>
                     </span>
                 </div>
