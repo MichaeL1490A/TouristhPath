@@ -1,0 +1,8 @@
+/* ESTILOS TEXTAREA */
+textarea {
+    resize: vertical;
+}
+
+.p-inputtextarea.p-inputtext {
+    height: auto;
+}

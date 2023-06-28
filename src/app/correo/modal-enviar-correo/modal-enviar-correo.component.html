@@ -1,0 +1,108 @@
+<div class="grid p-fluid">
+    <div class="col-12">
+        <div class="grid">
+
+            <!--TABLA ENVIAR CORREO-->
+            <div class="col-6">
+                <div class="grid">
+                    <div class="col-12 mt-1 color-text">
+                        ENVIAR A
+                    </div>
+
+                    <div class="col-12" style="--height-table: calc(100vh - 500px);">
+                        <p-table [value]="listaCorreos" [scrollable]="true" [autoLayout]="false" 
+                        [ngStyle]="{'min-width': '400px;', 'max-width': '400px;'}"
+                        >
+                            <ng-template pTemplate="header">
+                                <tr>
+                                    <th style="width: 40px;">N</th>
+                                    <th >Correos</th>
+                                    <th style="width: 60px;">
+                                        <div class="custom-button-table-agregar"
+                                        (click)="agregarCorreo()">+</div>
+                                    </th>        
+                                </tr>
+                            </ng-template>
+                            <ng-template pTemplate="body" let-correo let-i="rowIndex">
+                                <tr>
+                                    <td class="text-center">{{ i + 1 | number:'2.0-0' }}</td>
+                                    <td>
+                                        <div>
+                                            <input pInputText [(ngModel)]="correo.correo"
+                                            [title]="correo.correo"/>
+                                        </div>
+                                    </td>
+                                    <td class="text-center">
+                                        <div>
+                                            <span style="--url-icon: url(assets/icons/acciones/cancelar.svg)">
+                                                <p-button styleClass="button-default custom-icon button-rojo" icon="pi"
+                                                (onClick)="eliminarCorreo(i)">
+                                                </p-button>
+                                            </span>
+                                        </div>
+                                    </td>
+                                </tr>
+                            </ng-template>
+                        </p-table>
+                    </div>
+
+                </div>
+            </div>
+            <!--TABLA ENVIAR CORREO-->
+
+            <!--MENSAJE ENVIAR CORREO-->
+            <div class="col-6">
+                <div class="grid">
+                    <div class="col-12 mt-3">
+                        <span class="p-float-label p-float-label-static">
+                            <input pInputText id="asunto" [(ngModel)]="mensaje.asunto" maxlength="200"/>
+                            <label htmlFor="asunto">Asunto<span class="campo-obligatorio"> *</span></label>
+                        </span>
+                    </div>
+                    <div class="col-12">
+                        <span class="p-float-label p-float-label-static">
+                            <textarea class="h-80" pInputTextarea maxlength="240" style="resize:none"
+                            maxlength="400" id="observaciones" [(ngModel)]="mensaje.mensaje"></textarea>
+                            <label htmlFor="observaciones">Mensaje<span class="campo-obligatorio"> *</span></label>        
+                        </span>
+                    </div>
+                    <div class="col-12">
+                        <div class="grid">
+                            <div class="col-12 flex justify-content-end">
+                                <span style="--url-icon: url(assets/icons/acciones/enviar_mail.svg)" class="mr-2">
+                                    <p-button label="Enviar" styleClass="button-default custom-icon" icon="pi"
+                                    (onClick)="enviarMensaje()">
+                                    </p-button>    
+                                </span>
+                                <span style="--url-icon: url(assets/icons/acciones/cancelar.svg)">
+                                    <p-button label="Cancelar" styleClass="button-default custom-icon button-rojo" 
+                                    icon="pi" (onClick)="cerrarModal()">
+                                    </p-button>    
+                                </span>
+                            </div>
+                        </div>
+
+                    </div>
+
+                </div>
+            </div>
+            <!--MENSAJE ENVIAR CORREO-->
+
+        </div>
+    </div>
+</div>
+
+<div class="spinner text-center" *ngIf="blnCargando">
+    <p-blockUI [blocked]="true">
+        <div class="col-12">
+            <div class="row">
+                <p-progressSpinner styleClass="custom-spinner"></p-progressSpinner>
+            </div>
+            <div class="row">
+                <h3 class="mensaje-spinner"><b>{{mensajeCarga}}</b></h3>
+            </div>
+        </div>
+    </p-blockUI>
+  </div>
+  
+

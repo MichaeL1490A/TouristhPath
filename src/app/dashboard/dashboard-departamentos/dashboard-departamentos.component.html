@@ -1,0 +1,38 @@
+<div class="container">
+    <div class="grid p-fluid mt-2">
+        <div class="col-12" style="padding-top:0px !important;" >
+            <div class="grid" >
+                <div class="col-6"  style="background-color: white;z-index: 1;; position: relative;">
+                    <app-dashboard-departamentos-izquierda [seleccionarDepartamento]="seleccionarDepartamento" [clicked]="clicked"></app-dashboard-departamentos-izquierda>
+                    <div style="position: absolute; top: 10px; left: 40px;z-index: 3; display: grid;">
+                        <span class="titulo">Información Nacional</span>
+                        <span class="fecha">{{fechaActual |date: 'dd MMM yyyy' }}</span>
+                    </div>
+                    <div style="position: absolute; top: 80vh; left: 40px;z-index: 3;">
+                        <div >
+                            <svg height="50"class="mapa"    style="cursor: pointer;" (click)="seleccion(1)" width="34" [attr.fill]="clicked.id!=0?'var(--color-default)':'#2b7a71'" style="padding: 4px ;border: 1px solid #2b7a71;">
+                                <use [attr.href]="'/assets/icons/dashboard/mapa.svg#Layer_1'"></use>
+                            </svg>
+                        </div>
+                        <div class="mb-2">
+                            <p-button styleClass="circle-dot-1"></p-button>
+                            <span style="color: var(--color-default);">
+                                Lugares donde Spectrum está presente
+                            </span>
+                        </div>
+                        <div>
+                            <p-button styleClass="circle-dot-2"></p-button>
+                            <span style="color: var(--color-default);">
+                                Lugares donde Spectrum NO está presente
+                            </span>
+                        </div>
+                    </div>
+                    
+                </div>
+                <div class="col-6" >
+                    <app-dashboard-departamentos-derecha [seleccionarDepartamento]="seleccionarDepartamento"></app-dashboard-departamentos-derecha>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

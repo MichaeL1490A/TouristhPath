@@ -1,0 +1,40 @@
+<div class="grid">
+    <div class="col-12">
+        <span style="color: white; font-size: 4vh; font-weight: 600;">Bienvenido(a)</span>
+    </div>
+</div>
+<div class="grid mt-1">
+    <div class="col-12">
+        <svg fill="white" class="icono-login">
+            <use href="assets/icons/login/user.svg#Capa_2"></use>
+        </svg>
+        <span class="span-login">Usuario</span>
+        <input pInputText id="username" class="w-full input-login" [(ngModel)]="usuario.username"/>
+    </div>
+</div>
+<div class="grid mt-1">
+    <div class="col-12">
+        <svg fill="white" class="icono-login">
+            <use href="assets/icons/login/password.svg#Capa_2"></use>
+        </svg>
+        <span class="span-login">Contraseña</span>
+        <p-password [(ngModel)]="usuario.password" [feedback]="false"></p-password>
+    </div>
+</div>
+<div class="grid mt-1">
+    <div class="col-12">
+        <p-checkbox class="w-full checkbox-login" [(ngModel)]="rememberMe" [binary]="true" inputId="rec" label="Dejar abierta la sesión"></p-checkbox>
+    </div>
+</div>
+<div class="grid mt-1">
+    <div class="col-12 text-center">
+        <p-button label="INGRESAR" styleClass="button-default button-login" (onClick)="login()"></p-button>
+    </div>
+</div>
+<hr class="hr-login">
+<div class="grid mt-1">
+    <div class="col-12 text-center">
+        <span style="color: white; font-size: 1.8vh; font-weight: 400;">¿No puedes acceder a tu cuenta?<br>
+        Da click <span style="color: var( --color-hover-amarillo); cursor: pointer;" (click)="recuperarUsuario()">AQUÍ</span></span>
+    </div>
+</div>

@@ -1,0 +1,109 @@
+/* ESTILOS MULTISELECT */
+.p-multiselect {
+    height: 33px;
+    background: white;
+    border: 1px solid var(--color-border-default);
+    border-radius: 3px;
+}
+
+.p-multiselect:not(.p-disabled):hover {
+    border-color: var(--color-border-hover);
+}
+
+.p-multiselect:not(.p-disabled).p-focus {
+    outline: 0 none;
+    outline-offset: 0;
+    box-shadow: none;
+    border-color: var(--color-border-selected);
+}
+
+.p-multiselect .p-multiselect-trigger {
+    background: transparent;
+    color: rgba(0, 0, 0, 0.6);
+    width: 2.75rem;
+    border-top-right-radius: 3px;
+    border-bottom-right-radius: 3px;
+}
+
+.p-multiselect-panel {
+    background: white;
+    color: var(--color-text-input);
+    border: 0 none;
+    border-radius: 3px;
+    box-shadow: 0 2px 4px -1px #0003, 0 4px 5px #00000024, 0 1px 10px #0000001f;
+}
+
+.p-multiselect-panel .p-multiselect-header {
+    padding: 0.75rem;
+    border-bottom: 1px solid var(--color-border-default);
+    color: var(--color-text-input);
+    background: white;
+    margin: 0;
+    border-top-right-radius: 3px;
+    border-top-left-radius: 3px;
+}
+
+.p-multiselect-panel .p-multiselect-header .p-checkbox {
+    margin-right: 0.5rem;
+}
+
+.p-multiselect-panel .p-multiselect-header .p-multiselect-filter-container .p-inputtext {
+    padding-right: 1.75rem;
+}
+
+.p-multiselect-panel .p-multiselect-header .p-multiselect-filter-container .p-multiselect-filter-icon {
+    right: 0.75rem;
+    color: var(--color-text-input);
+}
+
+.p-multiselect-panel .p-multiselect-header .p-multiselect-close {
+    margin-left: 0.5rem;
+    width: 2rem;
+    height: 2rem;
+    color: var(--color-text-input);
+    border: 0 none;
+    background: transparent;
+    border-radius: 50%;
+    transition: background-color 0.2s, color 0.2s, box-shadow 0.2s;
+}
+
+.p-multiselect-panel .p-multiselect-items {
+    padding: 0;
+}
+
+.p-multiselect-panel .p-multiselect-items .p-multiselect-item {
+    margin: 0;
+    padding: 0.75rem 0.75rem;
+    border: 0 none;
+    color: var(--color-text-input);
+    background: transparent;
+    transition: none;
+    border-radius: 0;
+}
+
+.p-multiselect-panel .p-multiselect-items .p-multiselect-item .p-checkbox {
+    margin-right: 0.5rem;
+}
+
+.p-multiselect .p-multiselect-label {
+    padding: 10.5px;
+    padding-top: 8px;
+    color: var(--color-text-input);
+    text-transform: uppercase;
+    transition: background-color 0.2s, border-color 0.2s, color 0.2s, box-shadow 0.2s, background-size 0.2s cubic-bezier(0.64, 0.09, 0.08, 1);
+}
+
+.p-multiselect .p-multiselect-clear-icon {
+    color: var(--color-text-input);
+    right: 3rem;
+}
+
+.p-multiselect-panel .p-multiselect-items .p-multiselect-empty-message {
+    padding: 0.75rem 1.25rem;
+    color: var(--color-text-input);
+    background: transparent;
+}
+
+.p-multiselect.p-multiselect-chip .p-multiselect-label {
+    gap: 0.5rem;
+}

@@ -1,0 +1,7 @@
+.iconos-flotantes {
+    position: relative;
+    display: flex;
+    top: -36px;
+    left: -3px;
+    float: right;
+}

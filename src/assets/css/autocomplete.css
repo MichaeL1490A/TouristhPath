@@ -1,0 +1,36 @@
+/* ESTILOS AUTOCOMPLETE */
+.p-autocomplete-panel {
+    background: white;
+    color: var(--color-text-input);
+    border: 0 none;
+    border-radius: 3px;
+    box-shadow: 0 2px 4px -1px #0003, 0 4px 5px #00000024, 0 1px 10px #0000001f;
+}
+
+.p-autocomplete-panel .p-autocomplete-items .p-autocomplete-item {
+    margin: 0;
+    padding: 0.75rem 0.75rem;
+    border: 0 none;
+    color: var(--color-text-input) !important;
+    text-transform: uppercase;
+    background: transparent;
+    transition: none;
+    border-radius: 0;
+}
+
+.p-autocomplete-panel .p-autocomplete-items .p-autocomplete-item:hover {
+    background: var(--color-default-hover);
+}
+
+.p-autocomplete-panel .p-autocomplete-items .p-autocomplete-item.p-highlight {
+    color: var(--color-text-input) !important;
+    background-color: var(--color-itemlist-selected);
+}
+
+.p-autocomplete .p-autocomplete-loader {
+    right: 0.75rem;
+}
+
+.p-autocomplete.p-autocomplete-dd .p-autocomplete-loader {
+    right: 3.75rem;
+}
