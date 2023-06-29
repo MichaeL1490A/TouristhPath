@@ -10,6 +10,8 @@ import { Distrito } from 'src/app/ubigeo/models/distrito';
 import { MessageService } from 'primeng/api';
 import { Mensaje } from 'src/app/correo/models/mensaje';
 import { Mensajes } from 'src/app/common/mensajes';
+import { ViajeService } from '../viaje.service';
+import { FuncionesComunes } from 'src/app/common/funciones-comunes';
 
 @Component({
   selector: 'app-viaje-detalle',
@@ -17,6 +19,8 @@ import { Mensajes } from 'src/app/common/mensajes';
   styleUrls: ['./viaje-detalle.component.css']
 })
 export class ViajeDetalleComponent {
+
+  f = FuncionesComunes;
 
   id: number;
   viaje: Viaje = new Viaje();
@@ -50,7 +54,8 @@ export class ViajeDetalleComponent {
     private activatedRoute: ActivatedRoute,
     private auxiliarService: TablaAuxiliarService,
     private ubigeroService: UbigeoService,
-    private messageService: MessageService
+    private messageService: MessageService,
+    private viajeService: ViajeService
   ){
 
   }
@@ -74,7 +79,9 @@ export class ViajeDetalleComponent {
 
 
       if(this.id == 0){
-        this.nuevoViaje()
+        this.nuevoViaje();
+      }else{
+        this.getViajeById();
       }
 
       
@@ -113,9 +120,51 @@ export class ViajeDetalleComponent {
     })
   }
 
+  validar(): boolean {
+    return this.f.valida([
+      { 'tipo': 'number', 'nombre': 'el precio regular', 'valor': this.viaje.precioRegular },
+      { 'tipo': 'number', 'nombre': 'el precio vip', 'valor': this.viaje.precioVip },
+      { 'tipo': 'number', 'nombre': 'las horas de viaje', 'valor': this.viaje.horasViaje },
+      { 'tipo': 'number', 'nombre': 'el total de pasajeros', 'valor': this.viaje.totalPasajeros },
+      { 'tipo': 'string', 'nombre': 'el terminal de origen', 'valor': this.viaje.origenTerminalSalida },
+      { 'tipo': 'object', 'nombre': 'el distrito de origen del terminal', 'valor': this.viaje.origenDistrito },
+      { 'tipo': 'string', 'nombre': 'la direccion de origen del terminal', 'valor': this.viaje.origenDireccion },
+      { 'tipo': 'string', 'nombre': 'el terminal de llegada', 'valor': this.viaje.destinoTerminalLlegada },
+      { 'tipo': 'object', 'nombre': 'el distrito de llegada del terminal', 'valor': this.viaje.destinoDistrito },
+      { 'tipo': 'string', 'nombre': 'el direccion de llegada del terminal', 'valor': this.viaje.destinoDireccion }
+    ], this.messageService);
+  }
+
+
   guardar(){
+    if(!this.validar()) return
+
+    this.viajeService.create(this.viaje).subscribe({
+      next: (res) => {
+        this.messageService.add({severity: 'success', summary: `${Mensajes.tituloSuccess}`, detail: 'Se ha creado el viaje con éxito'});
+        this.salir();
+      },
+      error: (err) => {
+        this.messageService.add({severity: 'error', summary: `${Mensajes.tituloError}`, detail: 'Error al crear el viaje'});
+      }
+    })
     console.log(this.viaje)
   }
+
+  getViajeById(){
+    this.viajeService.getById(this.id).subscribe({
+      next: (res) => {
+        this.viaje = res
+      },
+      error: (err) => {
+        this.messageService.add({severity: 'error', summary: `${Mensajes.tituloError}`, detail: 'Error al obtener datos del viaje'});
+      }
+    })
+  }
+
+
+
+
 
   salir(){
     this.router.navigateByUrl("/viaje/listado");

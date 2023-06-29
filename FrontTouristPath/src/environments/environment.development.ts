@@ -1,5 +1,5 @@
 export const environment = {
-    empresa: 'Spectrum',
+    empresa: 'Tourist Path',
     apiURL: 'http://172.16.2.54:8090/',
     imagenDefault: 'assets/images/default_image.png',
     regexAutocomplete: /[^[\]{}`\\^]/,

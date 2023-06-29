@@ -27,7 +27,7 @@ export class IniciarSesionComponent {
     private router: Router,
     private messageService: MessageService,
     private authService: AuthService,
-    private moduloService: ModuloService,
+    private moduloService: ModuloService
   ) { }
 
   @HostListener('window:keydown.enter', ['$event'])
@@ -58,7 +58,7 @@ export class IniciarSesionComponent {
         }
         if(this.authService.usuario.rolesAuthorities.includes("ROLE_ADMIN")) {
           this.authService.blnAdmin = true;
-        } 
+        }
       },
       error: (err) => {
         if (err.error?.error_description?.includes('Bad credentials')) {

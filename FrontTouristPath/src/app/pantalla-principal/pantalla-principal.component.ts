@@ -1,4 +1,4 @@
-import { Component, Injector, NgZone, OnInit } from '@angular/core';
+import { Component, ElementRef, Injector, NgZone, OnInit, ViewChild } from '@angular/core';
 import { Router } from '@angular/router';
 import { MessageService } from 'primeng/api';
 @Component({
@@ -9,11 +9,14 @@ import { MessageService } from 'primeng/api';
 
 export class PantallaPrincipalComponent implements OnInit{
   
-
+  @ViewChild('btnIngresar', { static: false }) btnIngresar!: ElementRef;
+  
   transcript: string = '';
   recognition: any;
   private router: Router;
   isCommandExecuted: boolean = false;
+  isListening: boolean = false;
+
 
   constructor(
     private ngZone: NgZone, 
@@ -27,7 +30,15 @@ export class PantallaPrincipalComponent implements OnInit{
   }
 
   ngOnInit(): void {
-    this.startListening();
+  }
+
+  toggleListening() {
+    this.isListening = !this.isListening;
+    if (this.isListening) {
+      this.startListening();
+    } else {
+      this.stopListening();
+    }
   }
 
   startListening() {
@@ -35,49 +46,71 @@ export class PantallaPrincipalComponent implements OnInit{
 
     this.recognition.onresult = (event: any) => {
       this.ngZone.run(() => {
-        const transcript = Array.from(event.results)
-          .map((result: any) => result[0].transcript)
-          .join('');
+      const transcript = Array.from(event.results)
+        .map((result: any) => result[0].transcript)
+        .join('');
 
-        this.transcript = transcript;
-        this.handleVoiceRecognition(transcript);
-      });
-    };
+      this.transcript = transcript;
+      this.handleVoiceRecognition(transcript);
+    });
+  };
 
-    this.recognition.onend = () => {
-      if (this.isCommandExecuted) {
-        // Limpia la ruta y establece isCommandExecuted en false después de reiniciar
-        this.router.navigateByUrl('');
-        this.isCommandExecuted = false;
-      }
-      this.startListening(); // Reiniciar el reconocimiento después de que se detenga
-    };
+  this.recognition.onend = () => {
+    if (this.isCommandExecuted) {
+      this.router.navigateByUrl('');
+      this.isCommandExecuted = false;
+    }
+    // No reiniciar el reconocimiento de voz aquí
+  };
+}
+
+stopListening() {
+  this.recognition.stop();
+}
+  
+  
+  handleIngresarClick() {
+    console.log('Botón "Ingresar" clickeado');
   }
-
-  handleVoiceRecognition(transcript: string): void {
+  handleVoiceRecognition(transcript: string): boolean {
     if (transcript === 'viaje listado') {
       this.handleVoiceCommand('viaje listado');
-    } else if (transcript === 'ir a productos') {
-      this.handleVoiceCommand('ir a productos');
+    } else if (transcript === 'pantalla principal') {
+      this.handleVoiceCommand('pantalla principal');
+    } else if (transcript === 'ingresar') {
+      this.handleVoiceCommand('ingresar');
+    }else {
+      console.log('Comando no reconocido');
+      return false;
     }
-    // Agrega más comandos y llamadas a `handleVoiceCommand` según tus necesidades
+    return true;
   }
 
-  handleVoiceCommand(command: string): void {
+  handleVoiceCommand(command: string): boolean {
     if (command === 'viaje listado') {
       this.router.navigate(['/viaje/listado']);
-      this.isCommandExecuted = true; // Establecer isCommandExecuted en true después de ejecutar el comando
+      this.isCommandExecuted = true;
       setTimeout(() => {
-        this.transcript = ''; // Limpiar el contenido del campo de transcripción después de 2 segundos
+        this.transcript = '';
       }, 2000);
-    } else if (command === 'ir a productos') {
-      this.router.navigate(['/productos']);
-      this.isCommandExecuted = true; // Establecer isCommandExecuted en true después de ejecutar el comando
+    } else if (command === 'pantalla principal') {
+      this.router.navigate(['/pantalla/principal']);
+      this.isCommandExecuted = true;
       setTimeout(() => {
-        this.transcript = ''; // Limpiar el contenido del campo de transcripción después de 2 segundos
+        this.transcript = '';
       }, 2000);
+    } else if (command === 'ingresar') {
+      this.btnIngresar.nativeElement.click();
+      this.isCommandExecuted = true;
+      setTimeout(() => {
+        this.transcript = '';
+      }, 2000);
+    } else {
+      console.log('Comando no reconocido');
+      return false;
     }
-    // Agrega más comandos y redirecciones según tus necesidades
+
+    return true;
   }
 
   //////////////////////////

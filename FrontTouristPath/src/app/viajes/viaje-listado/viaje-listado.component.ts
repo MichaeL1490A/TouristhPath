@@ -27,4 +27,5 @@ export class ViajeListadoComponent {
   { id: 2, nombre: 'S/. 200 - S/. 400', cantidad: '342' },
   { id: 3, nombre: 'S/. 400 - S/. 600', cantidad: '66' },
   { id: 4, nombre: '+ S/. 600', cantidad: '66' }]
+
 }
