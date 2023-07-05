@@ -71,6 +71,8 @@ import { ModalEnviarCorreoComponent } from './correo/modal-enviar-correo/modal-e
 import { ViajeListadoComponent } from './viajes/viaje-listado/viaje-listado.component';
 import { ViajeDetalleComponent } from './viajes/viaje-detalle/viaje-detalle.component';
 import { PantallaPrincipalComponent } from './pantalla-principal/pantalla-principal.component';
+import { ViajeModalArchivosComponent } from './viajes/viaje-modal-archivos/viaje-modal-archivos.component';
+import { ViajeModalPasajerosComponent } from './viajes/viaje-modal-pasajeros/viaje-modal-pasajeros.component';
 
 
 registerLocaleData(localeES, 'es-Pe');
@@ -101,7 +103,9 @@ registerLocaleData(localeES, 'es-Pe');
     ModalEnviarCorreoComponent,
     ViajeListadoComponent,
     ViajeDetalleComponent,
-    PantallaPrincipalComponent
+    PantallaPrincipalComponent,
+    ViajeModalArchivosComponent,
+    ViajeModalPasajerosComponent
   ],
   imports: [
     BrowserModule,

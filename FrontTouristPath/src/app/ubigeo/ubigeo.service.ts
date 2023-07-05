@@ -20,8 +20,33 @@ export class UbigeoService {
     )
   }
 
+  getDepartamentoByProvincia(provinciaId: number): Observable<any> {
+    return this.http.get<any>(`${this.urlEndPoint}/departamento/provincia/${provinciaId}`).pipe(
+      catchError(e => {
+        return throwError(() => e)
+      })
+    )
+  }
+
+
   getProvinciaByDepartamento(departamentoId: number): Observable<any[]> {
     return this.http.get<any[]>(`${this.urlEndPoint}/provincia/departamento/${departamentoId}`).pipe(
+      catchError(e => {
+        return throwError(() => e)
+      })
+    )
+  }
+
+  getProvinciaByDistrito(distritoId: number): Observable<any> {
+    return this.http.get<any>(`${this.urlEndPoint}/provincia/lista/${distritoId}`).pipe(
+      catchError(e => {
+        return throwError(() => e)
+      })
+    )
+  }
+
+  getDistritoByDistrito(distritoId: number): Observable<any> {
+    return this.http.get<any>(`${this.urlEndPoint}/distrito/lista/${distritoId}`).pipe(
       catchError(e => {
         return throwError(() => e)
       })

@@ -24,7 +24,7 @@ const routes: Routes = [
   { path: 'pantalla/principal', component: PantallaPrincipalComponent, canActivate: [AuthGuard], title: `TOURIST PATH`, data: { role: ['sROLE_TI'], menu: 'TOURIST PATH' } },
 
   { path: 'viaje/listado', component: ViajeListadoComponent, canActivate: [AuthGuard], title: `TP | VIAJE | CONSULTA DE VIAJES`, data: { role: ['ROLE_TI'], menu: 'TOURIST PATH' } },
-  { path: 'viaje/detalle/:id', component: ViajeDetalleComponent, canActivate: [AuthGuard], title: `TP | VIAJE | DETALLE DEL VIAJE`, data: { role: ['ROLE_TI'], menu: 'TOURIST PATH' } },
+  { path: 'viaje/detalle/:id', component: ViajeDetalleComponent, title: `TP | VIAJE | DETALLE DEL VIAJE`, data: { role: ['ROLE_TI'], menu: 'TOURIST PATH' } },
 
   { path: '**', redirectTo: 'pantalla/principal', pathMatch: 'full' }
 ];

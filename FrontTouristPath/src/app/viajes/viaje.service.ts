@@ -34,4 +34,13 @@ export class ViajeService {
     );
   }
 
+  update(viaje: Viaje): Observable<any> {
+    return this.http.put<any>(`${this.urlEndPoint}/update/${viaje.id}`, viaje).pipe(
+      catchError(e => {
+        return throwError(() => e);
+      })
+    );
+  }
+
+
 }

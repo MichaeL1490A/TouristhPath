@@ -1,0 +1,66 @@
+<div class="grid p-fluid">
+    <div class="col-12 pb-0">
+        <div class="grid">
+
+            <div class="col-12 mb-4" style="height: 214px;">
+                <p-table [value]="listaArchivos" [scrollable]="true" scrollHeight="214px">
+                    <ng-template pTemplate="header">
+                        <tr>
+                            <th style="width: 40px;">N</th>
+                            <th  style="width: 200px;">Descripción del archivo</th>
+                            <th >Nombre Archivo</th>
+                            <th style="width: 70px;">
+                                <div class="custom-button-table-agregar" (click)="agregarArchivo()">+</div>
+                            </th>
+                        </tr>
+                    </ng-template>
+                    <ng-template pTemplate="body" let-arc let-i="rowIndex">
+                        <tr>
+                            <td class="text-center">{{ i + 1 | number:'2.0-0' }}</td>
+                            <td>
+                                <input pInputText [(ngModel)]="arc.descripcion" maxlength="400"
+                                />
+                            </td>
+                            <td >
+                                <span (click)="descargarArchivo(i)">
+                                    <input pInputText [(ngModel)]="arc.nombre" maxlength="400"
+                                    disabled="true"/>    
+                                </span>
+                            </td>
+                            <td class="text-center">
+                                <div class="flex">
+                                    <span style="--url-icon: url(assets/icons/acciones/abrir_archivo.svg)" class="mt-2">
+                                        <p-button styleClass="button-default custom-icon" class="mr-3" icon="pi"
+                                        (onClick)="abrirExploradorArchivos(arcAdj)">
+                                        </p-button>
+                                        <input #arcAdj id="arcAdj" name="arcAdj" style="display:none" type="file"
+                                        (change)="cargarArchivo($event, i)">
+                                    </span>
+                                    <span style="--url-icon: url(assets/icons/acciones/cancelar.svg)" class="mt-2">
+                                        <p-button styleClass="button-default custom-icon button-rojo" icon="pi"
+                                        (onClick)="eliminarArchivo(i)">
+                                        </p-button>
+                                    </span>    
+                                </div>
+                            </td>
+                        </tr>
+                    </ng-template>
+                </p-table>
+            </div>
+        </div>
+        <div class="grid">
+            <div class="col-12 pb-0 flex justify-content-end">
+                <div style="--url-icon: url(assets/icons/acciones/guardar.svg)">
+                    <p-button label="Guardar" icon="pi" styleClass="button-default custom-icon" 
+                    (onClick)="guardar()" class="mr-3"></p-button>
+                </div>
+                <div style="--url-icon: url(assets/icons/acciones/cancelar.svg)">
+                    <p-button label="Salir" icon="pi" styleClass="button-rojo custom-icon" 
+                    (onClick)="cerrarModal()"></p-button>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>

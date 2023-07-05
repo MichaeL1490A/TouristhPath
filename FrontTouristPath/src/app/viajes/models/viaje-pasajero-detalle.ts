@@ -3,10 +3,10 @@ import { ViajePasajero } from "./viaje-pasajero";
 
 export class ViajePasajeroDetalle{
 	id: number;
+
 	nombresApellidos: string;
 	sexo: TablaAuxiliarDetalle;
 	edad: number;
 	correo: string;
-    boleto: TablaAuxiliarDetalle;
-	pasajero: ViajePasajero;
+	boleto: TablaAuxiliarDetalle;
 }

@@ -1,4 +1,4 @@
-<div class="container">
+<div class="container" *ngIf="!blnCargando">
     <div class="grid p-fluid mt-2">
         <div class="col-12">
 
@@ -8,19 +8,11 @@
                         <div class="col-12 titulo">NUEVO AMANECER</div>
                         <div class="col-12" *ngIf="id != 0">
                             <div class="grid">
-                                <div class="col-2">
-                                    <span class="vertical-align-middle">FECHA DE SALIDA</span>
-                                </div>
-                                <div class="col-2">
-                                    <p-dropdown [autoDisplayFirst]="false" [placeholder]="'Todos'" optionLabel="nombre"
-                                        defaultLabel="Todos" optionValue="id" [showClear]="true"
-                                        onChange="dte.filter($event.value, 'fechaTicketIni', 'equals')"></p-dropdown>
-                                </div>
-                                <div class="col-3">
+                                <div class="col-6">
                                     CALIFICACIÓN
                                 </div>
-                                <div class="col-5">
-                                    PROGRAMADO
+                                <div class="col-6">
+                                    {{viaje?.estado?.nombre}}
                                 </div>
                             </div>
 
@@ -54,17 +46,29 @@
                 </div>
             </div>
 
-            <div class="grid mt-3">
-                <div class="col-4">            
-                    <p-galleria [value]="viaje.archivos" [showThumbnails]="false" [showIndicators]="true"
-                        [containerStyle]="{ 'width': '400px', 'margin-top': '0.5rem' }" [showItemNavigators]="true">
+            <div class="grid mt-2">
+                <div class="col-4" style="height:350px">
+                    <p-galleria [value]="viaje.archivos"  [showThumbnails]="false"  [showIndicators]="false"
+                    [containerStyle]="{ 'width': '400px', 'margin-top': '0.5rem' }" [showItemNavigators]="true"
+                    [(activeIndex)]="activeIndex" > 
                         <ng-template pTemplate="item" let-item>
-                            <img [src]="item.fotoUrl  | authImage | async"
-                                style="width: 100%; max-height: 50vh; display: block;" />
+                            <img [src]="item.fotoUrl  | authImage | async" style="width: 100%; max-height: 50vh; display: block;"  />
                         </ng-template>
                     </p-galleria>
                 </div>
-                <div class="col-8">
+                <div class="col-1">
+                    <div style="--url-icon: url(assets/icons/acciones/agregar.svg)" class="mb-3">
+                        <p-button icon="pi" styleClass="button-default custom-icon"
+                        (onClick)="selectFile(arc)"></p-button>
+                        <input #arc id="arc" name="arc" style="display: none;" type="file" accept="image/*"
+                        (change)="cargarFoto($event)" />    
+                    </div>        
+                    <div style="--url-icon: url(assets/icons/acciones/eliminar.svg)">
+                        <p-button icon="pi" styleClass="button-default custom-icon button-rojo"
+                        onClick="exportarLista()"></p-button>    
+                    </div>
+                </div>
+                <div class="col-7">
                     <div class=grid>
                         <div class="col mr-6">
                             <div class="grid">
@@ -79,7 +83,7 @@
                         <div class="col mr-6">
                             <div class="grid">
                                 <div class="col-12 text-center">
-                                    PRECIO REGULAR
+                                    PRECIO REG.
                                 </div>
                                 <div class="col-12 text-center circle-resumen">
                                     <span class="p-float-label p-float-label-static ">
@@ -153,7 +157,7 @@
                         <div class="col-2 pb-0 flex justify-content-end">
                             <span style="--url-icon: url(assets/icons/acciones/subir_archivo.svg)">
                                 <p-button icon="pi" styleClass="button-default custom-icon" class="mr-3"
-                                    onClick="cerrarModal()"></p-button>
+                                    (onClick)="abrirModalArchivos()"></p-button>
                             </span>
                         </div>
                         <div class="col-5">
@@ -166,15 +170,16 @@
                         </div>
                         <div class="col-5">
                             <span class="p-float-label p-float-label-static">
-                                <p-dropdown [(ngModel)]="viaje.oferta" optionLabel="descripcion" id="red"
+                                <p-dropdown [(ngModel)]="viaje.oferta" optionLabel="nombre" id="red"
+                                    [options]="listaOfertas"
                                     [autoDisplayFirst]="false" appendTo="body" placeholder="Seleccione"></p-dropdown>
                                 <label htmlFor="red">Oferta<span class="campo-obligatorio"> *</span></label>
                             </span>
                         </div>
                         <div class="col-2 pb-0 flex justify-content-end">
-                            <span style="--url-icon: url(assets/icons/acciones/subir_archivo.svg)">
+                            <span style="--url-icon: url(assets/icons/login/user.svg)">
                                 <p-button icon="pi" styleClass="button-default custom-icon" class="mr-3"
-                                    onClick="cerrarModal()"></p-button>
+                                    onClick="cerrarModal()" [disabled]="true"></p-button>
                             </span>
                         </div>
                         <div class="col-5">
@@ -186,7 +191,9 @@
                         </div>
                         <div class="col-5">
                             <span class="p-float-label p-float-label-static">
-                                <p-multiSelect optionLabel="abreviatura" id="tipoDocumento" defaultLabel="Todos"
+                                <p-multiSelect optionLabel="nombre" id="tipoDocumento"
+                                [(ngModel)]="serviciosVip"
+                                [options]="listaServiciosVip"
                                     onChange="tc.filter(f.multiselectAuxiliarToString($any($event)), 'tipoDocumento', 'equals')">
                                 </p-multiSelect>
                                 <label for="tipoDocumento">Servicios&nbsp;VIP</label>
